@@ -17,7 +17,7 @@ public class Main extends Application {
         Scene scene = new Scene(fxmlLoader.load());
         //primaryStage.setFullScreen(true);
         primaryStage.setScene(scene);
-        primaryStage.setTitle("My JavaFX App");
+        primaryStage.setTitle("Bella Italia : Sistema de Administración");
         primaryStage.show();
     }
 

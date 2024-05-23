@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<Pane fx:id="content_container" prefHeight="832.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+    <!-- Background Pane -->
+    <Pane fx:id="_bg__menu" prefHeight="832.0" prefWidth="1280.0" style="-fx-background-color: #AAAAAA;" />
+
+    <!-- Background Pane for Side Menu -->
+    <Pane fx:id="fondo" prefHeight="832.0" prefWidth="363.0" style="-fx-background-color: rgba(248,127,19,1);" />
+
+    <!-- Menu Item - Salir -->
+    <Label fx:id="_salir" layoutX="74.0" layoutY="724.0" prefHeight="70.0" prefWidth="162.0" style="-fx-text-alignment: left;" text="Salir">
+        <font>
+            <Font name="Rufina" size="36.0" />
+        </font>
+        <textFill>
+            <Color fx:value="#FFFFFF" />
+        </textFill>
+    </Label>
+
+    <!-- Menu Item - Platillos -->
+    <HBox fx:id="platillos" layoutX="74.0" layoutY="140.0" prefHeight="45.0" prefWidth="221.0">
+        <children>
+            <Label fx:id="platillos_ek1" prefHeight="70.0" prefWidth="262.0" style="-fx-text-alignment: left;" text="Platillos">
+                <font>
+                    <Font name="Rufina" size="36.0" />
+                </font>
+                <textFill>
+                    <Color fx:value="#FFFFFF" />
+                </textFill>
+            </Label>
+            <ImageView id="polygon_1" fitHeight="26.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                <image>
+                    <Image url="polygon_1.png" />
+                </image>
+            </ImageView>
+        </children>
+    </HBox>
+
+    <!-- Menu Item - Ordenes -->
+    <HBox fx:id="ordenes" layoutX="74.0" layoutY="232.0" prefHeight="45.0" prefWidth="221.0">
+        <children>
+            <Label fx:id="ordenes_ek1" prefHeight="70.0" prefWidth="262.0" style="-fx-text-alignment: left;" text="Ordenes">
+                <font>
+                    <Font name="Rufina" size="36.0" />
+                </font>
+                <textFill>
+                    <Color fx:value="#FFFFFF" />
+                </textFill>
+            </Label>
+            <ImageView id="polygon_2" fitHeight="26.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                <image>
+                    <Image url="polygon_2.png" />
+                </image>
+            </ImageView>
+        </children>
+    </HBox>
+
+    <!-- Menu Item - Clientes -->
+    <HBox fx:id="clientes" layoutX="74.0" layoutY="324.0" prefHeight="45.0" prefWidth="221.0">
+        <children>
+            <Label fx:id="clientes_ek1" prefHeight="70.0" prefWidth="262.0" style="-fx-text-alignment: left;" text="Clientes">
+                <font>
+                    <Font name="Rufina" size="36.0" />
+                </font>
+                <textFill>
+                    <Color fx:value="#FFFFFF" />
+                </textFill>
+            </Label>
+            <ImageView id="polygon_3" fitHeight="26.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                <image>
+                    <Image url="polygon_3.png" />
+                </image>
+            </ImageView>
+        </children>
+    </HBox>
+
+    <!-- Menu Item - Inventario -->
+    <HBox fx:id="inventario" layoutX="74.0" layoutY="416.0" prefHeight="45.0" prefWidth="221.0">
+        <children>
+            <Label fx:id="inventario_ek1" prefHeight="70.0" prefWidth="262.0" style="-fx-text-alignment: left;" text="Inventario">
+                <font>
+                    <Font name="Rufina" size="36.0" />
+                </font>
+                <textFill>
+                    <Color fx:value="#FFFFFF" />
+                </textFill>
+            </Label>
+            <ImageView id="polygon_4" fitHeight="26.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                <image>
+                    <Image url="polygon_4.png" />
+                </image>
+            </ImageView>
+        </children>
+    </HBox>
+
+    <!-- Background Image -->
+    <ImageView id="fondo_pizza_roja" layoutX="363.0" layoutY="1.0" fitHeight="830.75" fitWidth="916.93">
+        <image>
+            <Image url="fondo_pizza_roja.png" />
+        </image>
+    </ImageView>
+
+    <!-- Opacity Image -->
+    <ImageView id="opacidad" layoutX="363.0" layoutY="0.0" fitHeight="832.0" fitWidth="917.0">
+        <image>
+            <Image url="opacidad.png" />
+        </image>
+    </ImageView>
+
+    <!-- Logo -->
+    <Label fx:id="bella_italia" layoutX="591.0" layoutY="342.0" prefHeight="164.0" prefWidth="562.0" style="-fx-text-alignment: left;" text="Bella italia">
+        <font>
+            <Font name="Rufina" size="96.0" />
+        </font>
+        <textFill>
+            <Color fx:value="#FFFFFF" />
+        </textFill>
+    </Label>
+</Pane>
