@@ -7,7 +7,7 @@
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 
-<Pane fx:id="content_container" prefHeight="832.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+<Pane fx:id="content_container" prefHeight="832.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bella_italia.controllers.MenuController">
     <!-- Background Pane -->
     <Pane fx:id="_bg__menu" prefHeight="832.0" prefWidth="1280.0" style="-fx-background-color: #AAAAAA;" />
 
@@ -15,7 +15,7 @@
     <Pane fx:id="fondo" prefHeight="832.0" prefWidth="363.0" style="-fx-background-color: rgba(248,127,19,1);" />
 
     <!-- Menu Item - Salir -->
-    <Label fx:id="_salir" layoutX="74.0" layoutY="724.0" prefHeight="70.0" prefWidth="162.0" style="-fx-text-alignment: left;" text="Salir">
+    <Label fx:id="salir" onMouseClicked="#handleLabelClick" layoutX="74.0" layoutY="724.0" prefHeight="70.0" prefWidth="162.0" style="-fx-text-alignment: left;" text="Salir">
         <font>
             <Font name="Rufina" size="36.0" />
         </font>
@@ -25,7 +25,7 @@
     </Label>
 
     <!-- Menu Item - Platillos -->
-    <HBox fx:id="platillos" layoutX="74.0" layoutY="140.0" prefHeight="45.0" prefWidth="221.0">
+    <HBox fx:id="platillos" onMouseClicked="#handlePaneClick" layoutX="74.0" layoutY="140.0" prefHeight="45.0" prefWidth="221.0">
         <children>
             <Label fx:id="platillos_ek1" prefHeight="70.0" prefWidth="262.0" style="-fx-text-alignment: left;" text="Platillos">
                 <font>
@@ -44,7 +44,7 @@
     </HBox>
 
     <!-- Menu Item - Ordenes -->
-    <HBox fx:id="ordenes" layoutX="74.0" layoutY="232.0" prefHeight="45.0" prefWidth="221.0">
+    <HBox fx:id="ordenes" onMouseClicked="#handlePaneClick" layoutX="74.0" layoutY="232.0" prefHeight="45.0" prefWidth="221.0">
         <children>
             <Label fx:id="ordenes_ek1" prefHeight="70.0" prefWidth="262.0" style="-fx-text-alignment: left;" text="Ordenes">
                 <font>
@@ -63,7 +63,7 @@
     </HBox>
 
     <!-- Menu Item - Clientes -->
-    <HBox fx:id="clientes" layoutX="74.0" layoutY="324.0" prefHeight="45.0" prefWidth="221.0">
+    <HBox fx:id="clientes" onMouseClicked="#handlePaneClick" layoutX="74.0" layoutY="324.0" prefHeight="45.0" prefWidth="221.0">
         <children>
             <Label fx:id="clientes_ek1" prefHeight="70.0" prefWidth="262.0" style="-fx-text-alignment: left;" text="Clientes">
                 <font>
@@ -82,7 +82,7 @@
     </HBox>
 
     <!-- Menu Item - Inventario -->
-    <HBox fx:id="inventario" layoutX="74.0" layoutY="416.0" prefHeight="45.0" prefWidth="221.0">
+    <HBox fx:id="inventario" onMouseClicked="#handlePaneClick" layoutX="74.0" layoutY="416.0" prefHeight="45.0" prefWidth="221.0">
         <children>
             <Label fx:id="inventario_ek1" prefHeight="70.0" prefWidth="262.0" style="-fx-text-alignment: left;" text="Inventario">
                 <font>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="832.0" prefWidth="1282.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bella_italia.controllers.ClientesController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f87f13" height="108.0" stroke="BLACK" strokeType="INSIDE" width="1282.0" />
+      <Button fx:id="crearIngrediente" layoutX="64.0" layoutY="122.0" mnemonicParsing="false" onMouseClicked="#handleCrearPlatilloButtonClick" prefHeight="46.0" prefWidth="103.0" text="Crear +" />
+      <ComboBox fx:id="comboBoxMenu" layoutX="14.0" layoutY="14.0" prefHeight="78.0" prefWidth="312.0" promptText="Clientes" />
+
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f87f13" height="102.0" layoutX="64.0" layoutY="202.0" stroke="BLACK" strokeType="INSIDE" width="228.0" />
+      <Button fx:id="botonMiniMenu" layoutX="244.0" layoutY="213.0" mnemonicParsing="false" onMouseClicked="#handleMiniMenuButtonClick" text="+++" />
+      <Text layoutX="162.0" layoutY="230.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DATO" />
+      <Text layoutX="91.0" layoutY="242.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DATO" />
+      <Text layoutX="209.0" layoutY="242.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DATO" />
+      <TextField layoutX="1112.0" layoutY="122.0" promptText="Consultar" />
+      <Text layoutX="209.0" layoutY="266.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DATO" />
+      <Text layoutX="91.0" layoutY="265.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DATO" />
+      <Button fx:id="historialCliente" onMouseClicked="#handleHistorialClienteButtonClick" layoutX="77.0" layoutY="274.0" mnemonicParsing="false" text="Historial" />
+      <Button fx:id="direccionesCliente" onMouseClicked="#handleDireccionClienteButtonClick" layoutX="202.0" layoutY="274.0" mnemonicParsing="false" text="Direcciones" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f87f13" height="102.0" layoutX="326.0" layoutY="202.0" stroke="BLACK" strokeType="INSIDE" width="228.0" />
+      <Text layoutX="424.0" layoutY="230.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DATO" />
+      <Text layoutX="353.0" layoutY="242.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DATO" />
+      <Text layoutX="471.0" layoutY="242.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DATO" />
+      <Text layoutX="471.0" layoutY="266.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DATO" />
+      <Text layoutX="353.0" layoutY="265.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DATO" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f87f13" height="102.0" layoutX="582.0" layoutY="201.0" stroke="BLACK" strokeType="INSIDE" width="228.0" />
+      <Text layoutX="680.0" layoutY="229.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DATO" />
+      <Text layoutX="609.0" layoutY="241.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DATO" />
+      <Text layoutX="727.0" layoutY="241.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DATO" />
+      <Text layoutX="727.0" layoutY="265.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DATO" />
+      <Text layoutX="609.0" layoutY="264.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DATO" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f87f13" height="102.0" layoutX="836.0" layoutY="200.0" stroke="BLACK" strokeType="INSIDE" width="228.0" />
+      <Text layoutX="934.0" layoutY="228.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DATO" />
+      <Text layoutX="863.0" layoutY="240.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DATO" />
+      <Text layoutX="981.0" layoutY="240.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DATO" />
+      <Text layoutX="981.0" layoutY="264.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DATO" />
+      <Text layoutX="863.0" layoutY="263.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DATO" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f87f13" height="102.0" layoutX="64.0" layoutY="331.0" stroke="BLACK" strokeType="INSIDE" width="228.0" />
+      <Text layoutX="162.0" layoutY="359.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DATO" />
+      <Text layoutX="91.0" layoutY="371.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DATO" />
+      <Text layoutX="209.0" layoutY="371.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DATO" />
+      <Text layoutX="209.0" layoutY="395.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DATO" />
+      <Text layoutX="91.0" layoutY="394.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DATO" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f87f13" height="102.0" layoutX="326.0" layoutY="330.0" stroke="BLACK" strokeType="INSIDE" width="228.0" />
+      <Text layoutX="424.0" layoutY="358.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DATO" />
+      <Text layoutX="353.0" layoutY="370.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DATO" />
+      <Text layoutX="471.0" layoutY="370.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DATO" />
+      <Text layoutX="471.0" layoutY="394.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DATO" />
+      <Text layoutX="353.0" layoutY="393.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DATO" />
+      <Text layoutX="1084.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CONTADOR CLIENTES">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>

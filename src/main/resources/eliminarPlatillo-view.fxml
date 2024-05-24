@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<Pane fx:id="contentContainer" prefHeight="123.0" prefWidth="289.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+    <!-- Background Pane -->
+    <Pane fx:id="_bg_eliminar_platillo" layoutX="0" layoutY="0" prefHeight="123.0" prefWidth="287.0">
+        <children>
+            <!-- Rectangle 152 -->
+            <Pane fx:id="rectangle_152" layoutX="0" layoutY="0" prefHeight="123.0" prefWidth="289.0" style="-fx-background-color: rgba(232,228,224,1); -fx-border-color: black; -fx-border-radius: 20px;">
+            <children>
+               <Pane fx:id="boton_s_1" layoutX="174.0" layoutY="80.0" prefHeight="29.0" prefWidth="69.0">
+                  <children>
+                     <Pane fx:id="rectangle_1541" layoutX="0" layoutY="0" prefHeight="29.0" prefWidth="69.0" style="-fx-background-color: rgba(250,180,119,1); -fx-border-radius: 20px;">
+                        <children>
+                           <Label fx:id="s_1" alignment="CENTER" layoutX="14.0" layoutY="-2.0" prefHeight="34.0" prefWidth="41.0" style="-fx-font-family: 'Rufina'; -fx-font-size: 20px; -fx-text-fill: #000000;" text="No" />
+                        </children>
+                     </Pane>
+                  </children>
+               </Pane>
+                  <!-- Button S -->
+                  <Pane fx:id="boton_s_" layoutX="50.0" layoutY="80.0" prefHeight="29.0" prefWidth="69.0">
+                      <children>
+                          <Pane fx:id="rectangle_154" layoutX="0" layoutY="0" prefHeight="29.0" prefWidth="69.0" style="-fx-background-color: rgba(250,180,119,1); -fx-border-radius: 20px;">
+                        <children>
+                                <Label fx:id="s_" alignment="CENTER" layoutX="14.0" layoutY="-2.0" prefHeight="34.0" prefWidth="41.0" style="-fx-font-family: 'Rufina'; -fx-font-size: 20px; -fx-text-fill: #000000;" text="Sí" />
+                        </children>
+                     </Pane>
+                      </children>
+                  </Pane>
+            </children></Pane>
+            <!-- ImageView (Rectangle 153) -->
+            <ImageView fx:id="rectangle_153" fitHeight="19.0" fitWidth="20.0" layoutX="197.0" layoutY="8.0">
+                <image>
+                    <Image url="rectangle_153.png" />
+                </image>
+            </ImageView>
+            <!-- Text Label -->
+            <Label fx:id="texto_deseaseliminar" alignment="CENTER" layoutX="-2.0" layoutY="27.0" prefHeight="58.0" prefWidth="289.0" style="-fx-font-family: 'Rufina'; -fx-font-size: 20px; -fx-text-fill: #000000;" text="¿Desea eliminar este DATO?">
+            <font>
+               <Font size="2.0" />
+            </font></Label>
+        </children>
+    </Pane>
+</Pane>
