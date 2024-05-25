@@ -11,16 +11,7 @@ target/
 *.iws
 *.iml
 *.ipr
-
-### Eclipse ###
-.apt_generated
-.classpath
-.factorypath
-.project
-.settings
-.springBeans
-.sts4-cache
-
+C:\Users\eliud\IdeaProjects\Bella_Italia\out
 ### NetBeans ###
 /nbproject/private/
 /nbbuild/
@@ -36,3 +27,5 @@ build/
 
 ### Mac OS ###
 .DS_Store
+/out/
+
