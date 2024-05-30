@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bella_italia.controllers.ClientesController">
+<AnchorPane xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bella_italia.controllers.ClientesController">
    <AnchorPane id="content_container" prefHeight="832.0" prefWidth="1280.0" style="-fx-background-color: #FEF9F4; -fx-margin: 0 auto;">
       <children>
          <Pane id="_bg__clientes" layoutX="0.0" layoutY="0.0" prefHeight="832.0" prefWidth="1280.0" style="-fx-background-color: #FEF9F4;" />
@@ -35,9 +32,9 @@
                <Label id="consultar_clientes" alignment="CENTER" prefHeight="49.0" prefWidth="203.0" style="-fx-font-family: 'Rufina'; -fx-font-size: 20px; -fx-text-fill: #A19191;" text="Consultar clientes" />
             </children>
          </Pane>
-         <AnchorPane id="crear_cliente" layoutX="51.0" layoutY="126.0" prefHeight="58.0" prefWidth="144.0">
+         <AnchorPane id="paneCrearCliente" layoutX="51.0" layoutY="126.0" prefHeight="69.0" prefWidth="170.0">
             <children>
-               <Label id="crear" prefHeight="57.0" prefWidth="137.0" style="-fx-font-family: 'Rufina'; -fx-font-size: 32px; -fx-text-fill: #000000;" text="Crear +" />
+               <Button id="CrearCliente" onMouseClicked="#handleCrearClicked" prefHeight="69.0" prefWidth="170.0" style="-fx-font-family: 'Rufina'; -fx-font-size: 32px; -fx-text-fill: #000000; -fx-background-color: transparent;" text="Crear +" />
                <!--<ImageView id="signo_mas" layoutX="93.0" layoutY="0.0" fitWidth="51.0" fitHeight="58.0" image="@skins/signo_mas.png"></ImageView>-->
             </children>
          </AnchorPane>
@@ -53,7 +50,6 @@
                </Pane>
             </children>
          </AnchorPane>
-         <Pane id="rectangle_83" layoutX="1259.0" layoutY="212.0" prefHeight="123.0" prefWidth="10.0" style="-fx-background-color: #D9D9D9FF ; -fx-border-radius: 10px;" />
          <Label id="numero_telefono" layoutX="72.0" layoutY="251.0" prefHeight="30.0" prefWidth="111.0" style="-fx-font-family: 'Rufina'; -fx-font-size: 16px; -fx-text-fill: #000000;" text="6124645978" />
          <AnchorPane id="historial" layoutX="71.0" layoutY="277.0" prefHeight="25.0" prefWidth="137.0">
             <children>
@@ -73,27 +69,27 @@
                   </children>
                </Pane>
                <!-- Hidden menu, not visible -->
-               <VBox fx:id="ClientesMenu" layoutX="0.0" layoutY="88.0" prefWidth="364.0" style="-fx-background-color: rgba(248,127,19,1);" visible="false">
-                  <Pane fx:id="optionPane1" prefHeight="88.0" prefWidth="364.0" style="-fx-background-color: rgba(248,127,19,1);">
+               <VBox fx:id="ClientesMenu" layoutX="0.0" layoutY="88.0" pickOnBounds="false" prefWidth="364.0" style="-fx-background-color: rgba(248,127,19,1);" visible="false">
+                  <Pane fx:id="optionPanePlatillos" prefHeight="88.0" prefWidth="364.0" style="-fx-background-color: rgba(248,127,19,1);">
                      <children>
-                        <Label id="optionLabel1" alignment="CENTER" layoutX="14.0" layoutY="8.0" prefHeight="73.0" prefWidth="197.0" style="-fx-font-family: 'Rufina'; -fx-font-size: 20px; -fx-text-fill: #FFFFFF;" text="Option 1" />
+                        <Label id="optionLabel1" alignment="CENTER" layoutX="14.0" layoutY="8.0" prefHeight="73.0" prefWidth="197.0" style="-fx-font-family: 'Rufina'; -fx-font-size: 40px; -fx-text-fill: #FFFFFF;" text="Platillos" />
                      </children>
                   </Pane>
-                  <Pane fx:id="optionPane2" prefHeight="88.0" prefWidth="364.0" style="-fx-background-color: rgba(248,127,19,1);">
+                  <Pane fx:id="optionPaneOrdenes" prefHeight="88.0" prefWidth="364.0" style="-fx-background-color: rgba(248,127,19,1);">
                      <children>
-                        <Label id="optionLabel2" alignment="CENTER" layoutX="14.0" layoutY="8.0" prefHeight="73.0" prefWidth="197.0" style="-fx-font-family: 'Rufina'; -fx-font-size: 20px; -fx-text-fill: #FFFFFF;" text="Option 2" />
+                        <Label id="optionLabel2" alignment="CENTER" layoutX="14.0" layoutY="8.0" prefHeight="73.0" prefWidth="197.0" style="-fx-font-family: 'Rufina'; -fx-font-size: 40px; -fx-text-fill: #FFFFFF;" text="Ordenes" />
                      </children>
                   </Pane>
-                  <Pane fx:id="optionPane3" prefHeight="88.0" prefWidth="364.0" style="-fx-background-color: rgba(248,127,19,1);">
+                  <Pane fx:id="optionPaneInventario" prefHeight="88.0" prefWidth="364.0" style="-fx-background-color: rgba(248,127,19,1);">
                      <children>
-                        <Label id="optionLabel3" alignment="CENTER" layoutX="14.0" layoutY="8.0" prefHeight="73.0" prefWidth="197.0" style="-fx-font-family: 'Rufina'; -fx-font-size: 20px; -fx-text-fill: #FFFFFF;" text="Option 3" />
+                        <Label id="optionLabel3" alignment="CENTER" layoutX="14.0" layoutY="8.0" prefHeight="73.0" prefWidth="197.0" style="-fx-font-family: 'Rufina'; -fx-font-size: 40px; -fx-text-fill: #FFFFFF;" text="Inventario" />
                      </children>
                   </Pane>
                   <!-- Pane to fill the remaining space with orange background -->
                   <Pane prefHeight="550.0" prefWidth="364.0" style="-fx-background-color: rgba(248,127,19,1);" />
                   <Pane fx:id="optionPaneSalir" prefHeight="88.0" prefWidth="364.0" style="-fx-background-color: rgba(248,127,19,1);">
                      <children>
-                        <Label id="optionLabelSalir" alignment="CENTER" layoutX="14.0" layoutY="8.0" prefHeight="73.0" prefWidth="197.0" style="-fx-font-family: 'Rufina'; -fx-font-size: 20px; -fx-text-fill: #FFFFFF;" text="Salir" />
+                        <Label id="optionLabelSalir" alignment="CENTER" layoutX="14.0" layoutY="8.0" prefHeight="73.0" prefWidth="197.0" style="-fx-font-family: 'Rufina'; -fx-font-size: 40px; -fx-text-fill: #FFFFFF;" text="Salir" />
                      </children>
                   </Pane>
                </VBox>
