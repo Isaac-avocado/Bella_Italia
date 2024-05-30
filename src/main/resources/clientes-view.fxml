@@ -1,60 +1,104 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="832.0" prefWidth="1282.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bella_italia.controllers.ClientesController">
-   <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f87f13" height="108.0" stroke="BLACK" strokeType="INSIDE" width="1282.0" />
-      <Button fx:id="crearIngrediente" layoutX="64.0" layoutY="122.0" mnemonicParsing="false" onMouseClicked="#handleCrearPlatilloButtonClick" prefHeight="46.0" prefWidth="103.0" text="Crear +" />
-      <ComboBox fx:id="comboBoxMenu" layoutX="14.0" layoutY="14.0" prefHeight="78.0" prefWidth="312.0" promptText="Clientes" />
-
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f87f13" height="102.0" layoutX="64.0" layoutY="202.0" stroke="BLACK" strokeType="INSIDE" width="228.0" />
-      <Button fx:id="botonMiniMenu" layoutX="244.0" layoutY="213.0" mnemonicParsing="false" onMouseClicked="#handleMiniMenuButtonClick" text="+++" />
-      <Text layoutX="162.0" layoutY="230.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DATO" />
-      <Text layoutX="91.0" layoutY="242.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DATO" />
-      <Text layoutX="209.0" layoutY="242.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DATO" />
-      <TextField layoutX="1112.0" layoutY="122.0" promptText="Consultar" />
-      <Text layoutX="209.0" layoutY="266.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DATO" />
-      <Text layoutX="91.0" layoutY="265.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DATO" />
-      <Button fx:id="historialCliente" onMouseClicked="#handleHistorialClienteButtonClick" layoutX="77.0" layoutY="274.0" mnemonicParsing="false" text="Historial" />
-      <Button fx:id="direccionesCliente" onMouseClicked="#handleDireccionClienteButtonClick" layoutX="202.0" layoutY="274.0" mnemonicParsing="false" text="Direcciones" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f87f13" height="102.0" layoutX="326.0" layoutY="202.0" stroke="BLACK" strokeType="INSIDE" width="228.0" />
-      <Text layoutX="424.0" layoutY="230.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DATO" />
-      <Text layoutX="353.0" layoutY="242.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DATO" />
-      <Text layoutX="471.0" layoutY="242.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DATO" />
-      <Text layoutX="471.0" layoutY="266.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DATO" />
-      <Text layoutX="353.0" layoutY="265.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DATO" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f87f13" height="102.0" layoutX="582.0" layoutY="201.0" stroke="BLACK" strokeType="INSIDE" width="228.0" />
-      <Text layoutX="680.0" layoutY="229.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DATO" />
-      <Text layoutX="609.0" layoutY="241.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DATO" />
-      <Text layoutX="727.0" layoutY="241.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DATO" />
-      <Text layoutX="727.0" layoutY="265.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DATO" />
-      <Text layoutX="609.0" layoutY="264.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DATO" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f87f13" height="102.0" layoutX="836.0" layoutY="200.0" stroke="BLACK" strokeType="INSIDE" width="228.0" />
-      <Text layoutX="934.0" layoutY="228.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DATO" />
-      <Text layoutX="863.0" layoutY="240.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DATO" />
-      <Text layoutX="981.0" layoutY="240.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DATO" />
-      <Text layoutX="981.0" layoutY="264.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DATO" />
-      <Text layoutX="863.0" layoutY="263.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DATO" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f87f13" height="102.0" layoutX="64.0" layoutY="331.0" stroke="BLACK" strokeType="INSIDE" width="228.0" />
-      <Text layoutX="162.0" layoutY="359.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DATO" />
-      <Text layoutX="91.0" layoutY="371.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DATO" />
-      <Text layoutX="209.0" layoutY="371.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DATO" />
-      <Text layoutX="209.0" layoutY="395.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DATO" />
-      <Text layoutX="91.0" layoutY="394.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DATO" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f87f13" height="102.0" layoutX="326.0" layoutY="330.0" stroke="BLACK" strokeType="INSIDE" width="228.0" />
-      <Text layoutX="424.0" layoutY="358.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DATO" />
-      <Text layoutX="353.0" layoutY="370.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DATO" />
-      <Text layoutX="471.0" layoutY="370.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DATO" />
-      <Text layoutX="471.0" layoutY="394.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DATO" />
-      <Text layoutX="353.0" layoutY="393.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DATO" />
-      <Text layoutX="1084.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CONTADOR CLIENTES">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Text>
-   </children>
+<AnchorPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bella_italia.controllers.ClientesController">
+   <AnchorPane id="content_container" prefHeight="832.0" prefWidth="1280.0" style="-fx-background-color: #FEF9F4; -fx-margin: 0 auto;">
+      <children>
+         <Pane id="_bg__clientes" layoutX="0.0" layoutY="0.0" prefHeight="832.0" prefWidth="1280.0" style="-fx-background-color: #FEF9F4;" />
+         <Pane id="rectangle_157" layoutX="0.0" layoutY="0.0" prefHeight="832.0" prefWidth="1280.0" style="-fx-background-color: rgba(254,249,244,1);">
+            <children>
+               <Text layoutX="839.0" layoutY="156.0" strokeType="OUTSIDE" strokeWidth="0.0" text="🔍">
+                  <font>
+                     <Font size="28.0" />
+                  </font>
+               </Text>
+            </children>
+         </Pane>
+         <Pane id="rectangle_13" layoutX="56.0" layoutY="212.0" prefHeight="103.0" prefWidth="329.0" style="-fx-background-color: rgba(254,249,244,1); -fx-border-color: #000000; -fx-border-radius: 20px;">
+            <children>
+               <AnchorPane prefHeight="103.0" prefWidth="329.0" />
+            </children>
+         </Pane>
+         <Pane id="rectangle_11" layoutX="0.0" layoutY="0.0" prefHeight="88.0" prefWidth="1280.0" style="-fx-background-color: rgba(250,180,119,1);">
+            <children>
+               <Label id="contador_clientes" alignment="CENTER" layoutX="1037.0" layoutY="5.0" prefHeight="78.0" prefWidth="184.0" style="-fx-font-family: 'Rufina'; -fx-font-size: 32px; -fx-text-fill: #000000;" text="5 Clientes" />
+            </children>
+         </Pane>
+         <Pane id="rectangle_17" layoutX="872.0" layoutY="123.0" prefHeight="46.0" prefWidth="348.0" style="-fx-background-color: rgba(255,255,255,1); -fx-border-color: #000000; -fx-border-radius: 10px;">
+            <children>
+               <Label id="consultar_clientes" alignment="CENTER" prefHeight="49.0" prefWidth="203.0" style="-fx-font-family: 'Rufina'; -fx-font-size: 20px; -fx-text-fill: #A19191;" text="Consultar clientes" />
+            </children>
+         </Pane>
+         <AnchorPane id="crear_cliente" layoutX="51.0" layoutY="126.0" prefHeight="58.0" prefWidth="144.0">
+            <children>
+               <Label id="crear" prefHeight="57.0" prefWidth="137.0" style="-fx-font-family: 'Rufina'; -fx-font-size: 32px; -fx-text-fill: #000000;" text="Crear +" />
+               <!--<ImageView id="signo_mas" layoutX="93.0" layoutY="0.0" fitWidth="51.0" fitHeight="58.0" image="@skins/signo_mas.png"></ImageView>-->
+            </children>
+         </AnchorPane>
+         <Label id="esau_mora" layoutX="71.0" layoutY="222.0" prefHeight="40.0" prefWidth="144.0" style="-fx-font-family: 'Rufina'; -fx-font-size: 24px; -fx-text-fill: #000000;" text="Esau Mora" />
+         <Label id="id_345923" layoutX="242.0" layoutY="226.0" prefHeight="37.0" prefWidth="131.0" style="-fx-font-family: 'Rufina'; -fx-font-size: 20px; -fx-text-fill: #000000;" text="ID 345923" />
+         <!--<ImageView id="menu_desplegable_cliente" layoutX="354.0" layoutY="224.0" fitWidth="18.0" fitHeight="28.0" image="@skins/menu_desplegable_cliente.png"></ImageView>-->
+         <AnchorPane id="direcciones" layoutX="233.0" layoutY="276.0" prefHeight="25.0" prefWidth="137.0">
+            <children>
+               <Pane id="rectangle_93" layoutX="0.0" layoutY="0.0" prefHeight="25.0" prefWidth="137.0" style="-fx-background-color: rgba(250,180,119,1); -fx-border-radius: 10px;">
+                  <children>
+                     <Label id="direcciones_ek1" alignment="CENTER" layoutX="1.0" layoutY="-3.0" prefHeight="25.0" prefWidth="136.0" style="-fx-font-family: 'Rufina'; -fx-font-size: 20px; -fx-text-fill: #000000;" text="Direcciones" />
+                  </children>
+               </Pane>
+            </children>
+         </AnchorPane>
+         <Pane id="rectangle_83" layoutX="1259.0" layoutY="212.0" prefHeight="123.0" prefWidth="10.0" style="-fx-background-color: #D9D9D9FF ; -fx-border-radius: 10px;" />
+         <Label id="numero_telefono" layoutX="72.0" layoutY="251.0" prefHeight="30.0" prefWidth="111.0" style="-fx-font-family: 'Rufina'; -fx-font-size: 16px; -fx-text-fill: #000000;" text="6124645978" />
+         <AnchorPane id="historial" layoutX="71.0" layoutY="277.0" prefHeight="25.0" prefWidth="137.0">
+            <children>
+               <Pane id="rectangle_92" layoutX="0.0" layoutY="0.0" prefHeight="25.0" prefWidth="137.0" style="-fx-background-color: rgba(250,180,119,1); -fx-border-radius: 10px;">
+                  <children>
+                     <Label id="historial_ek1" alignment="CENTER" layoutX="16.0" layoutY="-2.0" prefHeight="25.0" prefWidth="106.0" style="-fx-font-family: 'Rufina'; -fx-font-size: 20px; -fx-text-fill: #000000;" text="Historial" />
+                  </children>
+               </Pane>
+            </children>
+         </AnchorPane>
+         <Label id="esaum_gmail_com" layoutX="188.0" layoutY="251.0" prefHeight="30.0" prefWidth="184.0" style="-fx-font-family: 'Rufina'; -fx-font-size: 16px; -fx-text-fill: #000000; -fx-text-alignment: right;" text="esaum@gmail.com" />
+         <AnchorPane id="clientes_menu_desplegable" layoutX="0.0" layoutY="0.0" prefHeight="88.0" prefWidth="364.0">
+            <children>
+               <Pane id="rectangle_12" fx:id="ClientesPane" layoutY="0.0" onMouseClicked="#handleClientesPaneClick" prefHeight="88.0" prefWidth="364.0" style="-fx-background-color: rgba(248,127,19,1);">
+                  <children>
+                     <Label id="clientes" alignment="CENTER" layoutX="14.0" layoutY="8.0" prefHeight="73.0" prefWidth="197.0" style="-fx-font-family: 'Rufina'; -fx-font-size: 40px; -fx-text-fill: #FFFFFF;" text="Clientes" />
+                  </children>
+               </Pane>
+               <!-- Hidden menu, not visible -->
+               <VBox fx:id="ClientesMenu" layoutX="0.0" layoutY="88.0" prefWidth="364.0" style="-fx-background-color: rgba(248,127,19,1);" visible="false">
+                  <Pane fx:id="optionPane1" prefHeight="88.0" prefWidth="364.0" style="-fx-background-color: rgba(248,127,19,1);">
+                     <children>
+                        <Label id="optionLabel1" alignment="CENTER" layoutX="14.0" layoutY="8.0" prefHeight="73.0" prefWidth="197.0" style="-fx-font-family: 'Rufina'; -fx-font-size: 20px; -fx-text-fill: #FFFFFF;" text="Option 1" />
+                     </children>
+                  </Pane>
+                  <Pane fx:id="optionPane2" prefHeight="88.0" prefWidth="364.0" style="-fx-background-color: rgba(248,127,19,1);">
+                     <children>
+                        <Label id="optionLabel2" alignment="CENTER" layoutX="14.0" layoutY="8.0" prefHeight="73.0" prefWidth="197.0" style="-fx-font-family: 'Rufina'; -fx-font-size: 20px; -fx-text-fill: #FFFFFF;" text="Option 2" />
+                     </children>
+                  </Pane>
+                  <Pane fx:id="optionPane3" prefHeight="88.0" prefWidth="364.0" style="-fx-background-color: rgba(248,127,19,1);">
+                     <children>
+                        <Label id="optionLabel3" alignment="CENTER" layoutX="14.0" layoutY="8.0" prefHeight="73.0" prefWidth="197.0" style="-fx-font-family: 'Rufina'; -fx-font-size: 20px; -fx-text-fill: #FFFFFF;" text="Option 3" />
+                     </children>
+                  </Pane>
+                  <!-- Pane to fill the remaining space with orange background -->
+                  <Pane prefHeight="550.0" prefWidth="364.0" style="-fx-background-color: rgba(248,127,19,1);" />
+                  <Pane fx:id="optionPaneSalir" prefHeight="88.0" prefWidth="364.0" style="-fx-background-color: rgba(248,127,19,1);">
+                     <children>
+                        <Label id="optionLabelSalir" alignment="CENTER" layoutX="14.0" layoutY="8.0" prefHeight="73.0" prefWidth="197.0" style="-fx-font-family: 'Rufina'; -fx-font-size: 20px; -fx-text-fill: #FFFFFF;" text="Salir" />
+                     </children>
+                  </Pane>
+               </VBox>
+            </children>
+         </AnchorPane>
+      </children>
+   </AnchorPane>
 </AnchorPane>
