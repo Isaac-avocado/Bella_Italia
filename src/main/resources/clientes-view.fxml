@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
 <AnchorPane xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bella_italia.controllers.ClientesController">
@@ -61,6 +62,8 @@
             </children>
          </AnchorPane>
          <Label id="esaum_gmail_com" layoutX="188.0" layoutY="251.0" prefHeight="30.0" prefWidth="184.0" style="-fx-font-family: 'Rufina'; -fx-font-size: 16px; -fx-text-fill: #000000; -fx-text-alignment: right;" text="esaum@gmail.com" />
+
+
          <AnchorPane id="clientes_menu_desplegable" layoutX="0.0" layoutY="0.0" prefHeight="88.0" prefWidth="364.0">
             <children>
                <Pane id="rectangle_12" fx:id="ClientesPane" layoutY="0.0" onMouseClicked="#handleClientesPaneClick" prefHeight="88.0" prefWidth="364.0" style="-fx-background-color: rgba(248,127,19,1);">
@@ -69,7 +72,7 @@
                   </children>
                </Pane>
                <!-- Hidden menu, not visible -->
-               <VBox fx:id="ClientesMenu" layoutX="0.0" layoutY="88.0" pickOnBounds="false" prefWidth="364.0" style="-fx-background-color: rgba(248,127,19,1);" visible="false">
+               <VBox fx:id="ClientesMenu" layoutX="0.0" layoutY="88.0" prefWidth="364.0" style="-fx-background-color: rgba(248,127,19,1);" visible="false">
                   <Pane fx:id="optionPanePlatillos" prefHeight="88.0" prefWidth="364.0" style="-fx-background-color: rgba(248,127,19,1);">
                      <children>
                         <Label id="optionLabel1" alignment="CENTER" layoutX="14.0" layoutY="8.0" prefHeight="73.0" prefWidth="197.0" style="-fx-font-family: 'Rufina'; -fx-font-size: 40px; -fx-text-fill: #FFFFFF;" text="Platillos" />
@@ -95,6 +98,7 @@
                </VBox>
             </children>
          </AnchorPane>
+         <Rectangle id="clickInterceptor" fill="transparent" height="69.0" layoutX="51.0" layoutY="126.0" onMouseClicked="#handleCrearClienteClicked" width="170.0" />
       </children>
    </AnchorPane>
 </AnchorPane>

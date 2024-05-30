@@ -1,5 +1,6 @@
 package com.example.bella_italia.controllers;
 
+import javafx.animation.PauseTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -9,6 +10,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.io.IOException;
 
@@ -40,7 +42,10 @@ public class ClientesController {
         System.out.println("Inicializando controlador...");
 
         // Manejar clics en el VBox cuando está visible
-        ClientesMenu.addEventHandler(MouseEvent.MOUSE_CLICKED, this::handleClientesMenuClicked);
+        if (ClientesMenu != null) {
+        } else {
+            System.err.println("ClientesMenu es nulo. Verifique que el ID coincida con el del archivo FXML.");
+        }
 
         if (ClientesPane != null) {
             ClientesPane.setOnMouseClicked(this::handleClientesPaneClick);
@@ -73,18 +78,20 @@ public class ClientesController {
         }
     }
 
-    private void handleClientesMenuClicked(MouseEvent event) {
-        // Cambiar la visibilidad del VBox
-        ClientesMenu.setVisible(!ClientesMenu.isVisible());
-
-        // Configurar pickOnBounds dependiendo de la visibilidad del VBox
-        ClientesMenu.setPickOnBounds(!ClientesMenu.isVisible());
-    }
-
     @FXML
     private void handleCrearClicked(MouseEvent event) {
         System.out.println("Crear fue pulsado");
+
+        // Deshabilitar temporalmente el VBox
+        ClientesMenu.setDisable(true);
+
+        // Cargar la vista
         loadViewNoClose("crearCliente-view.fxml");
+
+        // Volver a habilitar el VBox después de un breve retraso
+        PauseTransition pause = new PauseTransition(Duration.millis(500)); // Ajusta el tiempo según sea necesario
+        pause.setOnFinished(e -> ClientesMenu.setDisable(false));
+        pause.play();
     }
 
     private void handlePlatillosClicked() {
@@ -156,4 +163,11 @@ public class ClientesController {
             e.printStackTrace();
         }
     }
+
+    @FXML
+    private void handleCrearClienteClicked(MouseEvent event) {
+        System.out.println("Crear Cliente fue pulsado");
+        loadViewNoClose("crearCliente-view.fxml");
+    }
+
 }
