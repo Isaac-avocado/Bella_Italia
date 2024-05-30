@@ -16,11 +16,11 @@
                      <Font size="28.0" />
                   </font>
                </Text>
-            </children>
-         </Pane>
-         <Pane id="rectangle_13" layoutX="56.0" layoutY="212.0" prefHeight="103.0" prefWidth="329.0" style="-fx-background-color: rgba(254,249,244,1); -fx-border-color: #000000; -fx-border-radius: 20px;">
-            <children>
-               <AnchorPane prefHeight="103.0" prefWidth="329.0" />
+               <Text onMouseClicked="#cargarClientesDesdeBaseDeDatos" layoutX="1231.0" layoutY="158.0" strokeType="OUTSIDE" strokeWidth="0.0" text="🔃">
+                  <font>
+                     <Font size="28.0" />
+                  </font>
+               </Text>
             </children>
          </Pane>
          <Pane id="rectangle_11" layoutX="0.0" layoutY="0.0" prefHeight="88.0" prefWidth="1280.0" style="-fx-background-color: rgba(250,180,119,1);">
@@ -39,31 +39,8 @@
                <!--<ImageView id="signo_mas" layoutX="93.0" layoutY="0.0" fitWidth="51.0" fitHeight="58.0" image="@skins/signo_mas.png"></ImageView>-->
             </children>
          </AnchorPane>
-         <Label id="esau_mora" layoutX="71.0" layoutY="222.0" prefHeight="40.0" prefWidth="144.0" style="-fx-font-family: 'Rufina'; -fx-font-size: 24px; -fx-text-fill: #000000;" text="Esau Mora" />
-         <Label id="id_345923" layoutX="242.0" layoutY="226.0" prefHeight="37.0" prefWidth="131.0" style="-fx-font-family: 'Rufina'; -fx-font-size: 20px; -fx-text-fill: #000000;" text="ID 345923" />
-         <!--<ImageView id="menu_desplegable_cliente" layoutX="354.0" layoutY="224.0" fitWidth="18.0" fitHeight="28.0" image="@skins/menu_desplegable_cliente.png"></ImageView>-->
-         <AnchorPane id="direcciones" layoutX="233.0" layoutY="276.0" prefHeight="25.0" prefWidth="137.0">
-            <children>
-               <Pane id="rectangle_93" layoutX="0.0" layoutY="0.0" prefHeight="25.0" prefWidth="137.0" style="-fx-background-color: rgba(250,180,119,1); -fx-border-radius: 10px;">
-                  <children>
-                     <Label id="direcciones_ek1" alignment="CENTER" layoutX="1.0" layoutY="-3.0" prefHeight="25.0" prefWidth="136.0" style="-fx-font-family: 'Rufina'; -fx-font-size: 20px; -fx-text-fill: #000000;" text="Direcciones" />
-                  </children>
-               </Pane>
-            </children>
-         </AnchorPane>
-         <Label id="numero_telefono" layoutX="72.0" layoutY="251.0" prefHeight="30.0" prefWidth="111.0" style="-fx-font-family: 'Rufina'; -fx-font-size: 16px; -fx-text-fill: #000000;" text="6124645978" />
-         <AnchorPane id="historial" layoutX="71.0" layoutY="277.0" prefHeight="25.0" prefWidth="137.0">
-            <children>
-               <Pane id="rectangle_92" layoutX="0.0" layoutY="0.0" prefHeight="25.0" prefWidth="137.0" style="-fx-background-color: rgba(250,180,119,1); -fx-border-radius: 10px;">
-                  <children>
-                     <Label id="historial_ek1" alignment="CENTER" layoutX="16.0" layoutY="-2.0" prefHeight="25.0" prefWidth="106.0" style="-fx-font-family: 'Rufina'; -fx-font-size: 20px; -fx-text-fill: #000000;" text="Historial" />
-                  </children>
-               </Pane>
-            </children>
-         </AnchorPane>
-         <Label id="esaum_gmail_com" layoutX="188.0" layoutY="251.0" prefHeight="30.0" prefWidth="184.0" style="-fx-font-family: 'Rufina'; -fx-font-size: 16px; -fx-text-fill: #000000; -fx-text-alignment: right;" text="esaum@gmail.com" />
 
-         <VBox fx:id="content_container" layoutX="56.0" layoutY="212.0" spacing="10" />
+         <GridPane fx:id="content_container" hgap="50.0" vgap="50.0" layoutX="56.0" layoutY="212.0" prefHeight="722.0" prefWidth="1162.0"/>
 
          <AnchorPane id="clientes_menu_desplegable" layoutX="0.0" layoutY="0.0" prefHeight="88.0" prefWidth="364.0">
             <children>
@@ -99,7 +76,7 @@
                </VBox>
             </children>
          </AnchorPane>
-         <Rectangle id="clickInterceptor" fill="transparent" height="30.0" layoutX="84.0" layoutY="146.0" onMouseClicked="#handleCrearClienteClicked" width="106.0" />
+         <Rectangle id="clickInterceptor" fill="transparent" height="30.0" layoutX="84.0" layoutY="146.0" onMouseClicked="#handleCrearClicked" width="106.0" />
       </children>
    </AnchorPane>
 </AnchorPane>
