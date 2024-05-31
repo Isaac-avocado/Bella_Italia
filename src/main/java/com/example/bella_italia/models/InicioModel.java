@@ -8,8 +8,8 @@ import java.sql.SQLException;
 
 public class InicioModel {
     // Datos de conexión a la base de datos (cambia estos valores según tu configuración)
-    private static final String DB_URL = "jdbc:mysql://sql.freedb.tech:3306/freedb_Bella Italia";
-    private static final String DB_USER = "freedb_isaac";
+    public static final String DB_URL = "jdbc:mysql://sql.freedb.tech:3306/freedb_Bella Italia";
+    public static final String DB_USER = "freedb_isaac";
     private static final String DB_PASSWORD = "tQv#3G2fdCgAuM?";
 
     // Método para validar el inicio de sesión

@@ -2,6 +2,7 @@ package com.example.bella_italia.controllers;
 
 import com.example.bella_italia.models.Cliente;
 import com.example.bella_italia.models.ClientesModel;
+import com.example.bella_italia.models.Order;
 import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -19,20 +20,23 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Popup;
 import javafx.stage.Stage;
-import javafx.stage.Window;
 import javafx.util.Duration;
+
+import java.sql.*;
 import java.util.HashMap;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
-import javafx.geometry.Bounds;
+
 import javafx.scene.Node;
-import javafx.scene.control.Label;
-import javafx.scene.layout.GridPane;
-import javafx.stage.Popup;
+
+import static com.example.bella_italia.models.ClientesModel.DB_PASSWORD;
+import static com.example.bella_italia.models.InicioModel.DB_URL;
+import static com.example.bella_italia.models.InicioModel.DB_USER;
 
 public class ClientesController {
 
+    public Button guardarEdicion;
     private Cliente clienteActual;
 
     @FXML
@@ -67,16 +71,12 @@ public class ClientesController {
 
     @FXML
     private TextField espacio_nombre;
-
     @FXML
     private TextField espacio_correo;
-
     @FXML
     private TextField espacio_direccion;
-
     @FXML
     private TextField espacio_ciudad;
-
     @FXML
     private TextField espacio_zip;
 
@@ -135,18 +135,9 @@ public class ClientesController {
         String codigoPostal = espacio_zip.getText();
 
         try {
-            if (clienteActual == null) {
-                clientesModel.insertCliente(nombre, correo, direccion, ciudad, codigoPostal);
-                mostrarAlerta("Éxito", "Cliente creado exitosamente.", Alert.AlertType.INFORMATION);
-            } else {
-                clienteActual.setName(nombre);
-                clienteActual.setEmail(correo);
-                clienteActual.setAddress(direccion);
-                clienteActual.setCity(ciudad);
-                clienteActual.setZip(codigoPostal);
-                clientesModel.actualizarCliente(clienteActual);
-                mostrarAlerta("Éxito", "Cliente actualizado exitosamente.", Alert.AlertType.INFORMATION);
-            }
+
+            clientesModel.insertCliente(nombre, correo, direccion, ciudad, codigoPostal);
+            mostrarAlerta("Éxito", "Cliente creado exitosamente.", Alert.AlertType.INFORMATION);
 
             limpiarCampos();
             cargarClientesDesdeBaseDeDatos();
@@ -245,6 +236,17 @@ public class ClientesController {
             popup.show(new Stage());
         } else {
             System.out.println("No se ha encontrado el cliente asociado al botón de direcciones.");
+        }
+    }
+
+    @FXML
+    private void handleEditarClicked(ActionEvent event) {
+        Button editarButton = (Button) event.getSource();
+        Cliente clienteAEditar = obtenerClienteDesdeBoton(editarButton);
+
+        if (clienteAEditar != null) {
+            System.out.println("Entro al hadle editar el cliente.");
+            clientesModel.editarCliente(clienteAEditar.getId());
         }
     }
 
@@ -354,7 +356,6 @@ public class ClientesController {
             asociarClienteConPane(cliente, clientePane);
 
             content_container.add(clientePane, column, row);
-
             column++;
             if (column == 3) {
                 column = 0;
@@ -435,7 +436,19 @@ public class ClientesController {
         historialButton.setLayoutY(0);
         historialButton.setPrefSize(137, 25);
         historialButton.setStyle("-fx-background-color: rgba(250,180,119,1); -fx-background-radius: 10;");
-        historialButton.setOnAction(e -> mostrarHistorial());
+        historialButton.setUserData(cliente);
+        historialButton.setOnAction(e -> {
+            System.out.println("Mostrar historial, se pulsó...");
+            // Obtener el cliente asociado al botón de direcciones
+            Cliente clienteHistorial = (Cliente) historialButton.getUserData();
+
+            if (clienteHistorial != null) {
+                System.out.println("Mostrar historial, cargando...");
+                mostrarHistorialClienteDeBaseDeDatos(clienteHistorial, historialButton);
+            }else{
+                System.out.println("Mostrar historial, es null");
+            }
+        });
 
         historial.getChildren().addAll(rectangle92, historialButton);
 
@@ -451,7 +464,7 @@ public class ClientesController {
         //telefonoLabel.setPrefSize(111, 30);
         //telefonoLabel.setStyle("-fx-font-family: 'Rufina'; -fx-font-size: 16; -fx-text-fill: black;");
 
-        Button editarButton = new Button("🖋️");
+        Button editarButton = new Button("✎");
         editarButton.setStyle("-fx-font-family: Twemoji; -fx-background-color: transparent; -fx-border-color: transparent; -fx-font-size: 15; -fx-text-fill: black;");
         editarButton.setPrefSize(50, 50);
         editarButton.setLayoutX(240);
@@ -460,6 +473,7 @@ public class ClientesController {
         editarButton.setOnAction(e -> {
             Cliente clienteAEditar = (Cliente) editarButton.getUserData();
             if (clienteAEditar != null) {
+                System.out.println("Entro al setOnAction editar el cliente.");
                 cargarVistaEdicion(clienteAEditar);
             }
         });
@@ -508,7 +522,7 @@ public class ClientesController {
 
                 // Crear el contenido del popup con los datos del cliente
                 GridPane direccionGrid = new GridPane();
-                direccionGrid.setPrefSize(330, 340);
+                direccionGrid.setPrefSize(250, 250);
                 direccionGrid.setStyle("-fx-padding: 10; -fx-background-color: white; -fx-border-color: black; -fx-border-width: 1;");
                 direccionGrid.setHgap(10);
                 direccionGrid.setVgap(10);
@@ -537,7 +551,74 @@ public class ClientesController {
         }
     }
 
+    private void mostrarHistorialClienteDeBaseDeDatos(Cliente clienteHistorial, Node ownerNode) {
+        System.out.println("Mostrar historial, cargando...");
+        try {
+            if (clienteHistorial != null) {
+                System.out.println("Mostrar historial, cargado!");
 
+                /// Crear el contenido del popup con los datos del historial del cliente
+                GridPane historialGrid = new GridPane();
+                historialGrid.setPrefSize(250, 250);
+                historialGrid.setStyle("-fx-padding: 10; -fx-background-color: white; -fx-border-color: black; -fx-border-width: 1;");
+                historialGrid.setHgap(10);
+                historialGrid.setVgap(10);
+                historialGrid.add(new Label("Historial del cliente"), 0, 0); // Título
+
+                // Obtener la última orden del cliente
+                Order ultimaOrden = getLastOrder(clienteHistorial.getId());
+                if (ultimaOrden != null) {
+                    historialGrid.add(new Label("Última Orden: " + ultimaOrden.getId()), 0, 1);
+                    historialGrid.add(new Label("Total: " + ultimaOrden.getTotal()), 0, 2);
+                    historialGrid.add(new Label("Fecha: " + ultimaOrden.getOrderDate()), 0, 3);
+                } else {
+                    historialGrid.add(new Label("No se encontraron órdenes."), 0, 1);
+                }
+
+                // Crear el popup y agregar el contenido
+                Popup popup = new Popup();
+                popup.getContent().add(historialGrid);
+                popup.setAutoHide(true);
+
+                // Mostrar el popup anclado al nodo propietario
+                Bounds ownerBounds = ownerNode.localToScreen(ownerNode.getBoundsInLocal());
+                popup.show(ownerNode, ownerBounds.getMinX(), ownerBounds.getMaxY());
+                System.out.println("Mostrar historial, finalizado");
+            } else {
+                System.out.println("No se ha encontrado el cliente asociado al botón de historial.");
+            }
+        } catch (Exception e) {
+            System.err.println("Error al mostrar el popup: " + e.getMessage());
+            // Aquí podrías mostrar una alerta o realizar alguna otra acción en caso de error
+        }
+    }
+
+    public Order getLastOrder(long clientId) {
+        String query = "SELECT * FROM orders WHERE client_id = ? ORDER BY order_date DESC LIMIT 1";
+        try (Connection connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+
+            preparedStatement.setLong(1, clientId);
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    return new Order(
+                            resultSet.getLong("id"),
+                            resultSet.getLong("client_id"),
+                            resultSet.getLong("dish_id"),
+                            resultSet.getInt("quantity"),
+                            resultSet.getDouble("total"),
+                            resultSet.getTimestamp("order_date").toLocalDateTime(),
+                            resultSet.getTimestamp("created_at").toLocalDateTime(),
+                            resultSet.getTimestamp("updated_at").toLocalDateTime()
+                    );
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.err.println("Error al obtener la última orden: " + e.getMessage());
+        }
+        return null;
+    }
 
 
 
@@ -545,6 +626,7 @@ public class ClientesController {
     @FXML
     private void handleEditarAction(ActionEvent event) {
         // Obtener los nuevos datos del cliente de los campos de texto
+        Cliente clienteAEditar = (Cliente) guardarEdicion.getUserData();
         String nombre = espacio_nombre.getText();
         String correo = espacio_correo.getText();
         String direccion = espacio_direccion.getText();
@@ -553,12 +635,12 @@ public class ClientesController {
 
         try {
             // Actualizar los datos del cliente actual en la base de datos
-            clienteActual.setName(nombre);
-            clienteActual.setEmail(correo);
-            clienteActual.setAddress(direccion);
-            clienteActual.setCity(ciudad);
-            clienteActual.setZip(codigoPostal);
-            clientesModel.actualizarCliente(clienteActual);
+            clienteAEditar.setName(nombre);
+            clienteAEditar.setEmail(correo);
+            clienteAEditar.setAddress(direccion);
+            clienteAEditar.setCity(ciudad);
+            clienteAEditar.setZip(codigoPostal);
+            clientesModel.actualizarCliente(clienteAEditar);
 
             // Mostrar una alerta de éxito
             mostrarAlerta("Éxito", "Cliente actualizado exitosamente.", Alert.AlertType.INFORMATION);
@@ -566,25 +648,36 @@ public class ClientesController {
             // Limpiar los campos de texto y cargar nuevamente los clientes desde la base de datos
             limpiarCampos();
             cargarClientesDesdeBaseDeDatos();
-            clienteActual = null;
+            clienteAEditar = null;
         } catch (Exception e) {
             mostrarAlerta("Error", "Hubo un error al guardar el cliente. Por favor, inténtalo de nuevo.", Alert.AlertType.ERROR);
         }
     }
 
-    private void cargarVistaEdicion(Cliente cliente) {
+    private void cargarVistaEdicion(Cliente clienteAEditar) {
         System.out.println("Cargando vista de edición...");
-        ClientesMenu.setDisable(true);
-        loadViewNoClose("editarCliente-view.fxml");
-        System.out.println("Vista de edición cargada.");
-
-        clienteActual = cliente;
-        espacio_nombre.setText(cliente.getName());
-        espacio_correo.setText(cliente.getEmail());
-        espacio_direccion.setText(cliente.getAddress());
-        espacio_ciudad.setText(cliente.getCity());
-        espacio_zip.setText(cliente.getZip());
+        ClientesController controladorEdicion = loadViewEdit("editarCliente-view.fxml");
+        if (controladorEdicion != null) {
+            System.out.println("Vista de edición cargada.");
+            controladorEdicion.setCamposEdicion(clienteAEditar);
+        } else {
+            System.err.println("Error al cargar el controlador de la vista de edición.");
+        }
     }
+    public void setCamposEdicion(Cliente clienteAEditar) {
+        if (espacio_nombre != null && espacio_correo != null && espacio_direccion != null &&
+                espacio_ciudad != null && espacio_zip != null) {
+            guardarEdicion.setUserData(clienteAEditar);
+            espacio_nombre.setPromptText(clienteAEditar.getName());
+            espacio_correo.setPromptText(clienteAEditar.getEmail());
+            espacio_direccion.setPromptText(clienteAEditar.getAddress());
+            espacio_ciudad.setPromptText(clienteAEditar.getCity());
+            espacio_zip.setPromptText(clienteAEditar.getZip());
+        } else {
+            System.err.println("Error: los campos de texto no están inicializados.");
+        }
+    }
+
 
     private void mostrarHistorial() {
         System.out.println("Se pulsó Historial.");
@@ -632,5 +725,25 @@ public class ClientesController {
         }
     }
 
+    private <T> T loadViewEdit(String fxmlFileName) {
+        try {
+            String fxmlFilePath = "/" + fxmlFileName;
+            System.out.println("Cargando vista desde: " + fxmlFilePath);
 
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(fxmlFilePath));
+            Parent root = fxmlLoader.load();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+
+            return fxmlLoader.getController(); // Devuelve el controlador de la vista
+        } catch (IOException e) {
+            System.err.println("Error al cargar el archivo FXML: " + fxmlFileName);
+            e.printStackTrace();
+        } catch (NullPointerException e) {
+            System.err.println("El archivo FXML no se encontró: " + fxmlFileName);
+            e.printStackTrace();
+        }
+        return null;
+    }
 }

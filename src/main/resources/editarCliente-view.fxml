@@ -40,7 +40,7 @@
               <Pane fx:id="boton_guardar" layoutX="237.0" layoutY="349.0" prefHeight="30.0" prefWidth="103.0">
                   <Pane fx:id="pane_guardar" layoutY="1.0" prefHeight="30.0" prefWidth="103.0" style="-fx-background-color: rgba(250, 180, 119, 1); -fx-background-radius: 20;">
                       <children>
-                          <Button fx:id="guardar" alignment="CENTER" layoutY="-2.0" onAction="#handleEditarAction" prefHeight="33.17" prefWidth="103.0" style="-fx-text-alignment: left; -fx-font-family: Rufina; -fx-font-size: 20; -fx-text-fill: #000000;" text="Guardar" />
+                          <Button fx:id="guardarEdicion" alignment="CENTER" layoutY="-2.0" onAction="#handleEditarAction" prefHeight="33.17" prefWidth="103.0" style="-fx-text-alignment: left; -fx-font-family: Rufina; -fx-font-size: 20; -fx-text-fill: #000000;" text="Guardar" />
                       </children>
                   </Pane>
               </Pane>
