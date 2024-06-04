@@ -1,85 +1,90 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.Separator?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.shape.Rectangle?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="832.0" prefWidth="1282.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bella_italia.controllers.InventarioController">
-   <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f87f13" height="108.0" stroke="BLACK" strokeType="INSIDE" width="1282.0" />
-      <Button fx:id="crearIngrediente" layoutX="64.0" layoutY="122.0" mnemonicParsing="false" onMouseClicked="#handleCrearPlatilloButtonClick" prefHeight="46.0" prefWidth="103.0" text="Crear +" />
-      <ComboBox fx:id="comboBoxMenu" layoutX="14.0" layoutY="14.0" prefHeight="78.0" prefWidth="312.0" promptText="Inventario" />
+<VBox fx:id="content_container" prefWidth="1280" style="-fx-position: relative; -fx-display: block; -fx-margin: 0 auto;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bella_italia.controllers.InventarioController">
 
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f87f13" height="206.0" layoutX="64.0" layoutY="202.0" stroke="BLACK" strokeType="INSIDE" width="228.0" />
-      <Button fx:id="botonMiniMenu" layoutX="239.0" layoutY="374.0" mnemonicParsing="false" onMouseClicked="#handleMiniMenuButtonClick" text="+++" />
-      <Text layoutX="162.0" layoutY="230.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DATO" />
-      <Text layoutX="133.0" layoutY="315.0" strokeType="OUTSIDE" strokeWidth="0.0" text="📷">
-         <font>
-            <Font size="91.0" />
-         </font></Text>
-      <Text layoutX="162.0" layoutY="354.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DATO" />
-      <Text layoutX="162.0" layoutY="379.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DATO" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f87f13" height="206.0" layoutX="326.0" layoutY="202.0" stroke="BLACK" strokeType="INSIDE" width="228.0" />
-      <Text layoutX="395.0" layoutY="324.0" strokeType="OUTSIDE" strokeWidth="0.0" text="📷">
-         <font>
-            <Font size="91.0" />
-         </font>
-      </Text>
-      <Text layoutX="424.0" layoutY="363.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DATO" />
-      <Text layoutX="424.0" layoutY="388.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DATO" />
-      <Text layoutX="424.0" layoutY="230.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DATO" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f87f13" height="206.0" layoutX="587.0" layoutY="202.0" stroke="BLACK" strokeType="INSIDE" width="228.0" />
-      <Text layoutX="656.0" layoutY="324.0" strokeType="OUTSIDE" strokeWidth="0.0" text="📷">
-         <font>
-            <Font size="91.0" />
-         </font>
-      </Text>
-      <Text layoutX="685.0" layoutY="363.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DATO" />
-      <Text layoutX="685.0" layoutY="388.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DATO" />
-      <Text layoutX="685.0" layoutY="230.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DATO" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f87f13" height="206.0" layoutX="1026.0" layoutY="202.0" stroke="BLACK" strokeType="INSIDE" width="228.0" />
-      <Text layoutX="1095.0" layoutY="324.0" strokeType="OUTSIDE" strokeWidth="0.0" text="📷">
-         <font>
-            <Font size="91.0" />
-         </font>
-      </Text>
-      <Text layoutX="1124.0" layoutY="363.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DATO" />
-      <Text layoutX="1124.0" layoutY="388.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DATO" />
-      <Text layoutX="1124.0" layoutY="230.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DATO" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f87f13" height="206.0" layoutX="65.0" layoutY="435.0" stroke="BLACK" strokeType="INSIDE" width="228.0" />
-      <Text layoutX="134.0" layoutY="557.0" strokeType="OUTSIDE" strokeWidth="0.0" text="📷">
-         <font>
-            <Font size="91.0" />
-         </font>
-      </Text>
-      <Text layoutX="163.0" layoutY="596.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DATO" />
-      <Text layoutX="163.0" layoutY="621.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DATO" />
-      <Text layoutX="163.0" layoutY="463.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DATO" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f87f13" height="206.0" layoutX="327.0" layoutY="435.0" stroke="BLACK" strokeType="INSIDE" width="228.0" />
-      <Text layoutX="396.0" layoutY="557.0" strokeType="OUTSIDE" strokeWidth="0.0" text="📷">
-         <font>
-            <Font size="91.0" />
-         </font>
-      </Text>
-      <Text layoutX="425.0" layoutY="596.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DATO" />
-      <Text layoutX="425.0" layoutY="621.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DATO" />
-      <Text layoutX="425.0" layoutY="463.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DATO" />
-      <Separator layoutX="911.0" layoutY="202.0" orientation="VERTICAL" prefHeight="700.0" prefWidth="8.0" />
-      <Text layoutX="406.0" layoutY="179.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DATO">
-         <font>
-            <Font size="27.0" />
-         </font>
-      </Text>
-      <Text layoutX="1105.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DATO">
-         <font>
-            <Font size="27.0" />
-         </font>
-      </Text>
-      <TextField layoutX="1112.0" layoutY="122.0" promptText="Consultar" />
-   </children>
-</AnchorPane>
+   <!-- Background Pane -->
+   <Pane fx:id="_bg__inventario" layoutX="0" layoutY="0" prefHeight="2962" prefWidth="1280">
+      <children>
+         <!-- Rectangle 158 -->
+         <Pane fx:id="rectangle_158" layoutX="0" layoutY="-4" prefHeight="2966" prefWidth="1280" style="-fx-background-color: rgba(254,249,244,1);">
+            <children>
+               <Text layoutX="855.0" layoutY="153.0" strokeType="OUTSIDE" strokeWidth="0.0" text="🔍" />
+            </children></Pane>
+
+         <!-- Ingredientes Principales -->
+         <Label fx:id="ingredientes_principales" layoutX="51" layoutY="229" prefHeight="57" prefWidth="243" style="-fx-text-alignment: center; -fx-font-family: 'Rufina'; -fx-font-size: 20; -fx-text-fill: black;" text="Ingredientes principales" />
+
+         <!-- Line 4 -->
+         <!--<ImageView fx:id="line_4" layoutX="-280" layoutY="1555" fitHeight="0" fitWidth="2575" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@skins/line_4.png" />
+            </image>
+         </ImageView>-->
+
+         <!-- Crear Ingrediente -->
+         <Pane fx:id="crear_ingrediente" layoutX="54" layoutY="145" prefHeight="58" prefWidth="138" style="-fx-position: absolute;">
+            <children>
+               <Label fx:id="crear" layoutX="0" layoutY="5" prefHeight="57" prefWidth="137" style="-fx-text-alignment: left; -fx-font-family: 'Rufina'; -fx-font-size: 32; -fx-text-fill: black;" text="Crear" />
+
+               <!--<ImageView fx:id="signo_mas" layoutX="87" layoutY="0" fitHeight="58" fitWidth="51" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                     <Image url="@skins/signo_mas.png" />
+                  </image>
+               </ImageView>-->
+            </children>
+         </Pane>
+
+         <!-- Rectangle 123 -->
+         <Pane fx:id="rectangle_123" layoutX="872" layoutY="123" prefHeight="46" prefWidth="348" style="-fx-background-color: rgba(255,255,255,1); -fx-border-color: black; -fx-border-radius: 10;">
+            <children>
+      
+               <!-- Consultar Inventario -->
+               <Label fx:id="consultar_inventario" layoutX="14.0" layoutY="-1.0" prefHeight="49" prefWidth="219" style="-fx-text-alignment: left; -fx-font-family: 'Rufina'; -fx-font-size: 20; -fx-text-fill: #A19191;" text="Consultar inventario" />
+            </children></Pane>
+
+         <!-- Por Agotarse -->
+         <Label fx:id="por_agotarse" layoutX="1038" layoutY="231" prefHeight="40" prefWidth="141" style="-fx-text-alignment: left; -fx-font-family: 'Rufina'; -fx-font-size: 20; -fx-text-fill: black;" text="Por agotarse" />
+
+         <!-- Salsas y Condimentos -->
+         <Label fx:id="salsas_y_condimentos" layoutX="54" layoutY="711" prefHeight="57" prefWidth="214" style="-fx-text-alignment: center; -fx-font-family: 'Rufina'; -fx-font-size: 20; -fx-text-fill: black;" text="Salsas y condimentos" />
+
+         <!-- Lacteos -->
+         <Label fx:id="l_cteos" layoutX="57" layoutY="1412" prefHeight="57" prefWidth="87" style="-fx-text-alignment: center; -fx-font-family: 'Rufina'; -fx-font-size: 20; -fx-text-fill: black;" text="Lcteos" />
+
+         <!-- Ingredientes Adicionales -->
+         <Label fx:id="ingredientes_adicionales" layoutX="54" layoutY="1680" prefHeight="57" prefWidth="246" style="-fx-text-alignment: center; -fx-font-family: 'Rufina'; -fx-font-size: 20; -fx-text-fill: black;" text="Ingredientes adicionales" />
+
+         <!-- Vegetales y Hierbas Frescas -->
+         <Label fx:id="vegetales_y_hierbas_frescas" layoutX="54" layoutY="1948" prefHeight="57" prefWidth="262" style="-fx-text-alignment: center; -fx-font-family: 'Rufina'; -fx-font-size: 20; -fx-text-fill: black;" text="Vegetales y hierbas frescas" />
+
+         <!-- Bebidas -->
+         <Label fx:id="bebidas" layoutX="56" layoutY="2429" prefHeight="57" prefWidth="89" style="-fx-text-alignment: center; -fx-font-family: 'Rufina'; -fx-font-size: 20; -fx-text-fill: black;" text="Bebidas" />
+
+         <!-- Rectangle 11 -->
+         <Pane fx:id="rectangle_11" layoutX="0" layoutY="-4" prefHeight="88" prefWidth="1280" style="-fx-background-color: rgba(250,180,119,1);" />
+
+         <!-- Inventario Menu Desplegable -->
+         <Pane fx:id="inventario_menu_desplegable" layoutX="0" layoutY="-4" prefHeight="88" prefWidth="364" style="-fx-position: absolute;">
+            <children>
+               <Pane fx:id="rectangle_12" layoutX="0" layoutY="0" prefHeight="88" prefWidth="364" style="-fx-background-color: rgba(248,127,19,1);">
+                  <children>
+      
+                     <Label fx:id="inventario" layoutX="54.0" layoutY="7.0" prefHeight="73" prefWidth="238" style="-fx-text-alignment: left; -fx-font-family: 'Rufina'; -fx-font-size: 40; -fx-text-fill: white;" text="inventario" />
+                  </children></Pane>
+
+               <ImageView fx:id="polygon_13" fitHeight="14.4" fitWidth="15.56" layoutX="289" layoutY="44" pickOnBounds="true" preserveRatio="true">
+                  <!--<image>
+                     <Image url="@skins/polygon_13.png" />
+                  </image>-->
+               </ImageView>
+            </children>
+         </Pane>
+      </children>
+   </Pane>
+</VBox>

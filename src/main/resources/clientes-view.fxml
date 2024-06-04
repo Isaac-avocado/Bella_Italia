@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bella_italia.controllers.ClientesController">
+<AnchorPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bella_italia.controllers.ClientesController">
    <AnchorPane id="content_container" prefHeight="832.0" prefWidth="1280.0" style="-fx-background-color: #FEF9F4; -fx-margin: 0 auto;">
       <children>
          <Pane id="_bg__clientes" layoutX="0.0" layoutY="0.0" prefHeight="832.0" prefWidth="1280.0" style="-fx-background-color: #FEF9F4;" />
@@ -41,41 +46,36 @@
          </AnchorPane>
 
          <GridPane fx:id="content_container" hgap="50.0" layoutX="56.0" layoutY="212.0" prefHeight="722.0" prefWidth="1162.0" vgap="50.0" />
-
-         <AnchorPane id="clientes_menu_desplegable" layoutX="0.0" layoutY="0.0" prefHeight="88.0" prefWidth="364.0">
+         <Pane id="rectangle_12" fx:id="ClientesPane" onMouseClicked="#handleClientesPaneClick" prefHeight="88.0" prefWidth="364.0" style="-fx-background-color: rgba(248,127,19,1);">
             <children>
-               <Pane id="rectangle_12" fx:id="ClientesPane" layoutY="0.0" onMouseClicked="#handleClientesPaneClick" prefHeight="88.0" prefWidth="364.0" style="-fx-background-color: rgba(248,127,19,1);">
-                  <children>
-                     <Label id="clientes" alignment="CENTER" layoutX="14.0" layoutY="8.0" prefHeight="73.0" prefWidth="197.0" style="-fx-font-family: 'Rufina'; -fx-font-size: 40px; -fx-text-fill: #FFFFFF;" text="Clientes" />
-                  </children>
-               </Pane>
-               <!-- Hidden menu, not visible -->
-               <VBox fx:id="ClientesMenu" layoutX="0.0" layoutY="88.0" pickOnBounds="false" prefWidth="364.0" style="-fx-background-color: rgba(248,127,19,1);" visible="false">
-                  <Pane fx:id="optionPanePlatillos" prefHeight="88.0" prefWidth="364.0" style="-fx-background-color: rgba(248,127,19,1);">
-                     <children>
-                        <Label id="optionLabel1" alignment="CENTER" layoutX="14.0" layoutY="8.0" prefHeight="73.0" prefWidth="197.0" style="-fx-font-family: 'Rufina'; -fx-font-size: 40px; -fx-text-fill: #FFFFFF;" text="Platillos" />
-                     </children>
-                  </Pane>
-                  <Pane fx:id="optionPaneOrdenes" prefHeight="88.0" prefWidth="364.0" style="-fx-background-color: rgba(248,127,19,1);">
-                     <children>
-                        <Label id="optionLabel2" alignment="CENTER" layoutX="14.0" layoutY="8.0" prefHeight="73.0" prefWidth="197.0" style="-fx-font-family: 'Rufina'; -fx-font-size: 40px; -fx-text-fill: #FFFFFF;" text="Ordenes" />
-                     </children>
-                  </Pane>
-                  <Pane fx:id="optionPaneInventario" prefHeight="88.0" prefWidth="364.0" style="-fx-background-color: rgba(248,127,19,1);">
-                     <children>
-                        <Label id="optionLabel3" alignment="CENTER" layoutX="14.0" layoutY="8.0" prefHeight="73.0" prefWidth="197.0" style="-fx-font-family: 'Rufina'; -fx-font-size: 40px; -fx-text-fill: #FFFFFF;" text="Inventario" />
-                     </children>
-                  </Pane>
-                  <!-- Pane to fill the remaining space with orange background -->
-                  <Pane prefHeight="550.0" prefWidth="364.0" style="-fx-background-color: rgba(248,127,19,1);" />
-                  <Pane fx:id="optionPaneSalir" prefHeight="88.0" prefWidth="364.0" style="-fx-background-color: rgba(248,127,19,1);">
-                     <children>
-                        <Label id="optionLabelSalir" alignment="CENTER" layoutX="14.0" layoutY="8.0" prefHeight="73.0" prefWidth="197.0" style="-fx-font-family: 'Rufina'; -fx-font-size: 40px; -fx-text-fill: #FFFFFF;" text="Salir" />
-                     </children>
-                  </Pane>
-               </VBox>
+               <Label id="clientes" alignment="CENTER" layoutX="14.0" layoutY="8.0" prefHeight="73.0" prefWidth="197.0" style="-fx-font-family: 'Rufina'; -fx-font-size: 40px; -fx-text-fill: #FFFFFF;" text="Clientes" />
             </children>
-         </AnchorPane>
+         </Pane>
+         <!-- Hidden menu, not visible -->
+         <VBox fx:id="ClientesMenu" pickOnBounds="false" prefWidth="364.0" style="-fx-background-color: rgba(248,127,19,1);" visible="false">
+            <Pane fx:id="optionPanePlatillos" prefHeight="88.0" prefWidth="364.0" style="-fx-background-color: rgba(248,127,19,1);">
+               <children>
+                  <Label id="optionLabel1" alignment="CENTER" layoutX="14.0" layoutY="8.0" prefHeight="73.0" prefWidth="197.0" style="-fx-font-family: 'Rufina'; -fx-font-size: 40px; -fx-text-fill: #FFFFFF;" text="Platillos" />
+               </children>
+            </Pane>
+            <Pane fx:id="optionPaneOrdenes" prefHeight="88.0" prefWidth="364.0" style="-fx-background-color: rgba(248,127,19,1);">
+               <children>
+                  <Label id="optionLabel2" alignment="CENTER" layoutX="14.0" layoutY="8.0" prefHeight="73.0" prefWidth="197.0" style="-fx-font-family: 'Rufina'; -fx-font-size: 40px; -fx-text-fill: #FFFFFF;" text="Ordenes" />
+               </children>
+            </Pane>
+            <Pane fx:id="optionPaneInventario" prefHeight="88.0" prefWidth="364.0" style="-fx-background-color: rgba(248,127,19,1);">
+               <children>
+                  <Label id="optionLabel3" alignment="CENTER" layoutX="14.0" layoutY="8.0" prefHeight="73.0" prefWidth="197.0" style="-fx-font-family: 'Rufina'; -fx-font-size: 40px; -fx-text-fill: #FFFFFF;" text="Inventario" />
+               </children>
+            </Pane>
+            <!-- Pane to fill the remaining space with orange background -->
+            <Pane prefHeight="550.0" prefWidth="364.0" style="-fx-background-color: rgba(248,127,19,1);" />
+            <Pane fx:id="optionPaneSalir" prefHeight="88.0" prefWidth="364.0" style="-fx-background-color: rgba(248,127,19,1);">
+               <children>
+                  <Label id="optionLabelSalir" alignment="CENTER" layoutX="14.0" layoutY="8.0" prefHeight="73.0" prefWidth="197.0" style="-fx-font-family: 'Rufina'; -fx-font-size: 40px; -fx-text-fill: #FFFFFF;" text="Salir" />
+               </children>
+            </Pane>
+         </VBox>
          <Rectangle id="clickInterceptor" fill="transparent" height="30.0" layoutX="84.0" layoutY="146.0" onMouseClicked="#handleCrearClicked" width="106.0" />
       </children>
    </AnchorPane>
