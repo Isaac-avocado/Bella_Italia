@@ -187,7 +187,7 @@ public class PlatillosModel {
         }
         return -1;
     }
-    private int obtenerIdPlatillo(Platillo platillo) {
+    static int obtenerIdPlatillo(Platillo platillo) {
         String query = "SELECT id FROM dishes WHERE name = ?";
         try (Connection connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
              PreparedStatement preparedStatement = connection.prepareStatement(query)) {

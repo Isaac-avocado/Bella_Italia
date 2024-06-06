@@ -24,36 +24,30 @@ public class ClientesModel {
             statement.setString(5, zip);
 
             statement.executeUpdate();
+
+            // Ejecutar los métodos adicionales
+            long clientId = getLastInsertId(connection); // Obtener el ID del cliente insertado
+            crearOrderHistory(connection, clientId);
+            crearOrder(connection, clientId);
+
         } catch (SQLException e) {
             e.printStackTrace();
             System.err.println("Error al insertar el cliente en la base de datos: " + e.getMessage());
         }
-        try (Connection connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD)) {
-            PreparedStatement preparedStatement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
-            // Ejecutar la inserción del cliente
-            preparedStatement.executeUpdate();
+    }
 
-            // Obtener las claves generadas
-            try (ResultSet generatedKeys = preparedStatement.getGeneratedKeys()) {
-                if (generatedKeys.next()) {
-                    long clientId = generatedKeys.getLong(1);
-
-                    // Crear la entrada en order_history
-                    crearOrderHistory(clientId);
-
-                    // Crear la entrada en orders
-                    crearOrder(clientId);
-                } else {
-                    throw new SQLException("Creating client failed, no ID obtained.");
-                }
+    private long getLastInsertId(Connection connection) throws SQLException {
+        try (Statement statement = connection.createStatement();
+             ResultSet resultSet = statement.executeQuery("SELECT LAST_INSERT_ID()")) {
+            if (resultSet.next()) {
+                return resultSet.getLong(1);
+            } else {
+                throw new SQLException("No se pudo obtener el último ID insertado");
             }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
         }
     }
 
-    private void crearOrderHistory(long clientId) throws SQLException {
-        Connection connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
+    private void crearOrderHistory(Connection connection, long clientId) throws SQLException {
         String insertOrderHistorySQL = "INSERT INTO order_history (client_id, created_at, updated_at) VALUES (?, NOW(), NOW())";
         try (PreparedStatement preparedStatement = connection.prepareStatement(insertOrderHistorySQL)) {
             preparedStatement.setLong(1, clientId);
@@ -61,8 +55,7 @@ public class ClientesModel {
         }
     }
 
-    private void crearOrder(long clientId) throws SQLException {
-        Connection connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
+    private void crearOrder(Connection connection, long clientId) throws SQLException {
         String insertOrderSQL = "INSERT INTO orders (client_id, dish_id, cuantity, total, order_date, created_at, updated_at) VALUES (?, NULL, 0, 0.0, NOW(), NOW(), NOW())";
         try (PreparedStatement preparedStatement = connection.prepareStatement(insertOrderSQL)) {
             preparedStatement.setLong(1, clientId);
@@ -100,52 +93,47 @@ public class ClientesModel {
     // Método para eliminar un cliente de la base de datos por su ID
     public void eliminarCliente(int idCliente) {
         String query = "DELETE FROM clients WHERE id = ?";
-
         try (Connection connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
              PreparedStatement statement = connection.prepareStatement(query)) {
-
             statement.setInt(1, idCliente);
             int rowsDeleted = statement.executeUpdate();
-
             if (rowsDeleted > 0) {
                 System.out.println("Cliente eliminado exitosamente");
             } else {
                 System.out.println("No se encontró ningún cliente con el ID proporcionado");
             }
-
         } catch (SQLException e) {
             e.printStackTrace();
             System.err.println("Error al eliminar el cliente de la base de datos: " + e.getMessage());
         }
     }
 
-    // Método para editar un cliente de la base de datos por su ID
+
     public void editarCliente(int idCliente) {
-        String query = "DELETE FROM clients WHERE id = ?"; //Modificar para que haga lo necesario apra editar al cliente
+        String query = "UPDATE clients SET name = ?, email = ?, address = ?, city = ?, zip = ? WHERE id = ?";
 
         try (Connection connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
              PreparedStatement statement = connection.prepareStatement(query)) {
 
-            statement.setInt(1, idCliente);
-            int rowsDeleted = statement.executeUpdate();
+            // Configurar los parámetros de la consulta SQL
+            statement.setString(1, "name");
+            statement.setString(2, "email");
+            statement.setString(3, "address");
+            statement.setString(4, "city");
+            statement.setString(5, "zip");
+            statement.setInt(6, idCliente);
 
-            if (rowsDeleted > 0) {
-                System.out.println("Cliente eliminado exitosamente");
-            } else {
-                System.out.println("No se encontró ningún cliente con el ID proporcionado");
-            }
+            // Ejecutar la actualización del cliente
+            statement.executeUpdate();
 
         } catch (SQLException e) {
             e.printStackTrace();
-            System.err.println("Error al eliminar el cliente de la base de datos: " + e.getMessage());
+            System.err.println("Error al editar el cliente en la base de datos: " + e.getMessage());
         }
     }
-
-
 
     public void actualizarCliente(Cliente cliente) throws Exception {
         String query = "UPDATE clients SET name = ?, email = ?, address = ?, city = ?, zip = ? WHERE id = ?";
-
         try (Connection connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
              PreparedStatement pstmt = connection.prepareStatement(query)) {
             pstmt.setString(1, cliente.getName());
@@ -154,11 +142,11 @@ public class ClientesModel {
             pstmt.setString(4, cliente.getCity());
             pstmt.setString(5, cliente.getZip());
             pstmt.setInt(6, cliente.getId());
-
             pstmt.executeUpdate();
         } catch (SQLException e) {
             throw new Exception("Error al actualizar el cliente", e);
         }
     }
+
 
 }

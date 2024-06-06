@@ -16,8 +16,12 @@ public class Platillo {
         this.ingredientes = ingredientes;
     }
 
+    public void actualizarId(int nuevoId) {
+        this.id = nuevoId;
+    }
 
     public int getId() {
+        System.out.println(id);
         return id;
     }
 
@@ -46,6 +50,5 @@ public class Platillo {
     }
 
     public void setId(int generatedId) {
-        this.id = generatedId;
     }
 }

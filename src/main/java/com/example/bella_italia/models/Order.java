@@ -1,23 +1,21 @@
 package com.example.bella_italia.models;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 public class Order {
     private long id;
     private long clientId;
-    private long dishId;
-    private int quantity;
+    private List<Platillo> platillos;
     private double total;
     private LocalDateTime orderDate;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
-    // Constructor, getters y setters
-    public Order(long id, long clientId, long dishId, int quantity, double total, LocalDateTime orderDate, LocalDateTime createdAt, LocalDateTime updatedAt) {
+    public Order(long id, long clientId, List<Platillo> platillos, double total, LocalDateTime orderDate, LocalDateTime createdAt, LocalDateTime updatedAt) {
         this.id = id;
         this.clientId = clientId;
-        this.dishId = dishId;
-        this.quantity = quantity;
+        this.platillos = platillos;
         this.total = total;
         this.orderDate = orderDate;
         this.createdAt = createdAt;
@@ -25,12 +23,31 @@ public class Order {
     }
 
     // Getters y setters
-    public long getId() { return id; }
-    public long getClientId() { return clientId; }
-    public long getDishId() { return dishId; }
-    public int getQuantity() { return quantity; }
-    public double getTotal() { return total; }
-    public LocalDateTime getOrderDate() { return orderDate; }
-    public LocalDateTime getCreatedAt() { return createdAt; }
-    public LocalDateTime getUpdatedAt() { return updatedAt; }
+    public long getId() {
+        return id;
+    }
+
+    public long getClientId() {
+        return clientId;
+    }
+
+    public List<Platillo> getPlatillos() {
+        return platillos;
+    }
+
+    public double getTotal() {
+        return total;
+    }
+
+    public LocalDateTime getOrderDate() {
+        return orderDate;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
 }
