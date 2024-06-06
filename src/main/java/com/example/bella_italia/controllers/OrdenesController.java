@@ -6,98 +6,63 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.IOException;
 
 public class OrdenesController {
 
-    public Button crearPlatillo;
-    @FXML
-    private Button botonMiniMenu;
-    @FXML
-    private Button descargarPlatillo;
-    @FXML
-    private Button eliminarPlatillo;
-    @FXML
-    private Button editarPlatillo;
-    @FXML
-    private Button ingredientesPlatillo;
-    @FXML
-    private ComboBox<String> comboBoxMenu;
-
-    @FXML
-    private Pane botonAcceder, botonAcceder1, botonAcceder2;
+    public VBox OrdenesMenu;
+    public Pane optionPanePlatillos;
+    public Pane optionPaneClientes;
+    public Pane optionPaneSalir;
+    public Pane optionPaneInventario;
 
     @FXML
     public void initialize() {
         System.out.println("Inicializando controlador...");
-        System.out.println("ComboBoxMenu es nulo? " + (comboBoxMenu == null));
-
-        if (comboBoxMenu != null) {
-            comboBoxMenu.getItems().addAll("Platillos", "Clientes", "Inventario", "Salir");
-            comboBoxMenu.setOnAction(event -> handleComboBoxSelection());
-        }
+        
     }
 
     @FXML
-    public void handleCrearPlatilloButtonClick() {
-        Stage currentStage = (Stage) crearPlatillo.getScene().getWindow();
-        loadView2("crearPlatillo-view.fxml");
+    private void handleOrdenesPaneClick(MouseEvent event) {
+        boolean isVisible = OrdenesMenu.isVisible();
+        OrdenesMenu.setVisible(!isVisible);
     }
 
     @FXML
-    public void handleIngredientesPlatilloButtonClick() {
-        Stage currentStage = (Stage) ingredientesPlatillo.getScene().getWindow();
-        loadView2("ingredientesPlatillo-view.fxml");
+    private void handleInventarioClicked() {
+        System.out.println("Inventario fue pulsado");
+        Stage currentStage = (Stage) optionPaneInventario.getScene().getWindow();
+        loadView("inventario-view.fxml", currentStage);
     }
 
     @FXML
-    public void handleDescargarPlatilloButtonClick() {
-        Stage currentStage = (Stage) descargarPlatillo.getScene().getWindow();
-        loadView2("descargarPlatillo-view.fxml");
+    private void handlePlatillosClicked() {
+        System.out.println("Ordenes fue pulsado");
+        Stage currentStage = (Stage) optionPanePlatillos.getScene().getWindow();
+        loadView("platillos-view.fxml", currentStage);
     }
 
     @FXML
-    public void handleEliminarPlatilloButtonClick() {
-        Stage currentStage = (Stage) eliminarPlatillo.getScene().getWindow();
-        loadView2("eliminarPlatillo-view.fxml");
+    private void handleClientesClicked() {
+        System.out.println("Clientes fue pulsado");
+        Stage currentStage = (Stage) optionPaneClientes.getScene().getWindow();
+        loadView("clientes-view.fxml", currentStage);
     }
 
     @FXML
-    public void handleEditarPlatilloButtonClick() {
-        Stage currentStage = (Stage) editarPlatillo.getScene().getWindow();
-        loadView2("editarPlatillo-view.fxml");
-    }
-
-    @FXML
-    public void handleMiniMenuButtonClick() {
-        Stage currentStage = (Stage) botonMiniMenu.getScene().getWindow();
-        loadView2("miniMenuPlatillo-view.fxml");
-    }
-
-    private void handleComboBoxSelection() {
-        String selectedItem = comboBoxMenu.getSelectionModel().getSelectedItem();
-        if (selectedItem != null) {
-            Stage currentStage = (Stage) comboBoxMenu.getScene().getWindow();
-            switch (selectedItem) {
-                case "Platillos":
-                    loadView("platillos-view.fxml", currentStage);
-                    break;
-                case "Clientes":
-                    loadView("clientes-view.fxml", currentStage);
-                    break;
-                case "Inventario":
-                    loadView("inventario-view.fxml", currentStage);
-                    break;
-                case "Salir":
-                    loadView("menu-view.fxml", currentStage);
-                    break;
-                default:
-                    break;
-            }
-        }
+    private void handleSalirClicked() {
+        System.out.println("Salir fue pulsado");
+        Stage currentStage = (Stage) optionPaneSalir.getScene().getWindow();
+        loadView("menu-view.fxml", currentStage);
     }
 
     private void loadView(String fxmlFileName, Stage currentStage) {
@@ -140,4 +105,35 @@ public class OrdenesController {
             e.printStackTrace();
         }
     }
+
+    @FXML
+    private void handleCrearOrdenClicked(MouseEvent event) {
+        // Crear la ventana del popup
+        Stage popupStage = new Stage();
+        popupStage.initModality(Modality.APPLICATION_MODAL);
+        popupStage.initStyle(StageStyle.UTILITY);
+        popupStage.setTitle("Crear Orden");
+
+        // Crear el contenido del popup
+        VBox popupVBox = new VBox(10);
+        popupVBox.setPrefWidth(300);
+        popupVBox.setPrefHeight(200);
+        popupVBox.setAlignment(javafx.geometry.Pos.CENTER);
+
+        Label nameLabel = new Label("Platillo");
+        TextField nameField = new TextField();
+        nameField.setPromptText("Nombre");
+
+        Button createButton = new Button("Crear");
+        createButton.setOnAction(e -> {
+            popupStage.close();
+        });
+
+        popupVBox.getChildren().addAll(nameLabel, nameField, createButton);
+
+        Scene popupScene = new Scene(popupVBox);
+        popupStage.setScene(popupScene);
+        popupStage.show();
+    }
+
 }

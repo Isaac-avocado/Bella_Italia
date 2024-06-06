@@ -17,7 +17,7 @@
                      <Font size="28.0" />
                   </font></Text>
                <!-- Crear Ingrediente -->
-               <Pane fx:id="crear_ingrediente" onMouseClicked= "#handleCrearIngredienteClicked" layoutX="54.0" layoutY="128.0" prefHeight="58" prefWidth="138" style="-fx-position: absolute;">
+               <Pane fx:id="crear_ingrediente" layoutX="54.0" layoutY="128.0" onMouseClicked="#handleCrearIngredienteClicked" prefHeight="58" prefWidth="138" style="-fx-position: absolute;">
                   <children>
                      <Label fx:id="crear" layoutX="0" layoutY="-2.0" prefHeight="64.0" prefWidth="137" style="-fx-text-alignment: left; -fx-font-family: 'Rufina'; -fx-font-size: 32; -fx-text-fill: black;" text="Crear +" />
                   </children>
@@ -39,9 +39,9 @@
       
                <!-- Ingredientes Principales -->
                <Label fx:id="ingredientes_principales" layoutX="54.0" layoutY="223.0" prefHeight="57" prefWidth="243" style="-fx-text-alignment: center; -fx-font-family: 'Rufina'; -fx-font-size: 20; -fx-text-fill: black;" text="Ingredientes" />
-               <ScrollPane layoutX="1014.0" layoutY="300.0" prefHeight="531.0" prefWidth="190.0">
+               <ScrollPane layoutX="1014.0" layoutY="300.0" prefHeight="531.0" prefWidth="204.0">
                   <content>
-                     <VBox prefHeight="763.0" prefWidth="178.0" />
+                     <VBox fx:id="IngredientesAgotandose" prefHeight="763.0" prefWidth="178.0" />
                   </content>
                </ScrollPane>
             </children>
@@ -50,7 +50,7 @@
          <!-- DESDE AQUI -->
          <ScrollPane fx:id="ingredientesScrollPane" layoutX="49.0" layoutY="300.0" prefHeight="531.0" prefWidth="914.0">
             <content>
-               <GridPane  fx:id="ingredientesContainer"  hgap="20" vgap="20"  prefHeight="763.0" prefWidth="898.0" />
+               <GridPane fx:id="ingredientesContainer" hgap="20" prefHeight="763.0" prefWidth="898.0" vgap="20" />
             </content>
          </ScrollPane>
          <!-- HASTA AQUI -->
