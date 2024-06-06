@@ -3,6 +3,7 @@ package com.example.bella_italia.controllers;
 import com.example.bella_italia.models.Cliente;
 import com.example.bella_italia.models.ClientesModel;
 import com.example.bella_italia.models.Order;
+import com.example.bella_italia.models.OrderModel;
 import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -22,7 +23,6 @@ import javafx.stage.Popup;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-import java.sql.*;
 import java.util.HashMap;
 import java.io.IOException;
 import java.util.List;
@@ -30,11 +30,12 @@ import java.util.Map;
 
 import javafx.scene.Node;
 
-import static com.example.bella_italia.models.ClientesModel.DB_PASSWORD;
-import static com.example.bella_italia.models.InicioModel.DB_URL;
-import static com.example.bella_italia.models.InicioModel.DB_USER;
-
 public class ClientesController {
+
+    public Order getLastOrder(long clientId) {
+        // Llama al método getLastOrder del modelo de orden
+        return OrderModel.getLastOrder(clientId);
+    }
 
     public Button guardarEdicion;
     private Cliente clienteActual;
@@ -592,36 +593,6 @@ public class ClientesController {
             // Aquí podrías mostrar una alerta o realizar alguna otra acción en caso de error
         }
     }
-
-    public Order getLastOrder(long clientId) {
-        String query = "SELECT * FROM orders WHERE client_id = ? ORDER BY order_date DESC LIMIT 1";
-        try (Connection connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
-             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-
-            preparedStatement.setLong(1, clientId);
-            try (ResultSet resultSet = preparedStatement.executeQuery()) {
-                if (resultSet.next()) {
-                    return new Order(
-                            resultSet.getLong("id"),
-                            resultSet.getLong("client_id"),
-                            resultSet.getLong("dish_id"),
-                            resultSet.getInt("quantity"),
-                            resultSet.getDouble("total"),
-                            resultSet.getTimestamp("order_date").toLocalDateTime(),
-                            resultSet.getTimestamp("created_at").toLocalDateTime(),
-                            resultSet.getTimestamp("updated_at").toLocalDateTime()
-                    );
-                }
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-            System.err.println("Error al obtener la última orden: " + e.getMessage());
-        }
-        return null;
-    }
-
-
-
 
     @FXML
     private void handleEditarAction(ActionEvent event) {

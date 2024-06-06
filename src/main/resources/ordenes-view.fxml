@@ -3,32 +3,45 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane style="-fx-background-color: rgba(254,249,244,1);" prefHeight="832.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bella_italia.controllers.OrdenesController">
+<AnchorPane prefHeight="832.0" prefWidth="1280.0" style="-fx-background-color: rgba(254,249,244,1);" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bella_italia.controllers.OrdenesController">
    <children>
       <!-- Crear Orden-->
-      <Pane fx:id="crear_orden" onMouseClicked= "#handleCrearOrdenClicked" layoutX="54.0" layoutY="128.0" prefHeight="58" prefWidth="138" style="-fx-position: absolute;">
+      <Pane fx:id="crear_orden" layoutX="54.0" layoutY="128.0" onMouseClicked="#handleCrearOrdenClicked" prefHeight="58" prefWidth="138" style="-fx-position: absolute;">
          <children>
             <Label fx:id="crear" layoutX="0" layoutY="-2.0" prefHeight="64.0" prefWidth="137" style="-fx-text-alignment: left; -fx-font-family: 'Rufina'; -fx-font-size: 32; -fx-text-fill: black;" text="Crear +" />
          </children>
       </Pane>
 
-      <!-- Rectangle 123 -->
+      <!-- Consultar Ordenes -->
       <Pane fx:id="rectangle_123" layoutX="872" layoutY="123" prefHeight="46" prefWidth="348" style="-fx-background-color: rgba(255,255,255,1); -fx-border-color: black; -fx-border-radius: 10;">
          <children>
             <Label fx:id="consultar_inventario" layoutX="14.0" layoutY="-1.0" prefHeight="49" prefWidth="219" style="-fx-text-alignment: left; -fx-font-family: 'Rufina'; -fx-font-size: 20; -fx-text-fill: #A19191;" text="Consultar ordenes" />
          </children>
       </Pane>
 
+      <!-- Grid para mostrar las órdenes -->
+      <ScrollPane layoutX="50" layoutY="200" prefHeight="600" prefWidth="1180">
+         <content>
+            <GridPane fx:id="gridOrdenes" hgap="20" prefHeight="805.0" prefWidth="1164.0" vgap="20">
+               <!-- Define las columnas del GridPane -->
+               <columnConstraints>
+                  <ColumnConstraints />
+                  <ColumnConstraints />
+                  <ColumnConstraints />
+                  <ColumnConstraints />
+               </columnConstraints>
+            </GridPane>
+         </content>
+      </ScrollPane>
 
       <!-- Rectangle 11 -->
       <Pane fx:id="rectangle_11" prefHeight="88" prefWidth="1280" style="-fx-background-color: rgba(250,180,119,1);" />
       <!-- Inventario Menu Desplegable -->
-      <Pane id="rectangle_12" fx:id="PlatillosPane" onMouseClicked="#handleOrdenesPaneClick" prefHeight="88.0" prefWidth="364.0" style="-fx-background-color: rgba(248,127,19,1);">
+      <Pane id="rectangle_12" fx:id="OrdenesPane" onMouseClicked="#handleOrdenesPaneClick" prefHeight="88.0" prefWidth="364.0" style="-fx-background-color: rgba(248,127,19,1);">
          <children>
             <Label id="ordenes" alignment="CENTER" layoutX="14.0" layoutY="8.0" prefHeight="73.0" prefWidth="197.0" style="-fx-font-family: 'Rufina'; -fx-font-size: 40px; -fx-text-fill: #FFFFFF;" text="Ordenes" />
          </children>
       </Pane>
-
 
       <!-- Hidden menu, not visible -->
       <VBox fx:id="OrdenesMenu" layoutY="88.0" pickOnBounds="false" prefHeight="744.0" prefWidth="364.0" style="-fx-background-color: rgba(248,127,19,1);" visible="false">
@@ -39,7 +52,7 @@
          </Pane>
          <Pane fx:id="optionPanePlatillos" onMouseClicked="#handlePlatillosClicked" prefHeight="88.0" prefWidth="364.0" style="-fx-background-color: rgba(248,127,19,1);">
             <children>
-               <Label id="optionLabel2" alignment="CENTER" layoutX="14.0" layoutY="8.0" prefHeight="73.0" prefWidth="197.0" style="-fx-font-family: 'Rufina'; -fx-font-size: 40px; -fx-text-fill: #FFFFFF;" text="Ordenes" />
+               <Label id="optionLabel2" alignment="CENTER" layoutX="14.0" layoutY="8.0" prefHeight="73.0" prefWidth="197.0" style="-fx-font-family: 'Rufina'; -fx-font-size: 40px; -fx-text-fill: #FFFFFF;" text="Platillos" />
             </children>
          </Pane>
          <Pane fx:id="optionPaneClientes" onMouseClicked="#handleClientesClicked" prefHeight="88.0" prefWidth="364.0" style="-fx-background-color: rgba(248,127,19,1);">
@@ -55,6 +68,5 @@
             </children>
          </Pane>
       </VBox>
-
    </children>
 </AnchorPane>
