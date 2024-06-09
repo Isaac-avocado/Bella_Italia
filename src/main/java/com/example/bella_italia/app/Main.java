@@ -12,8 +12,7 @@ import java.util.Objects;
 public class Main extends Application {
 
     @Override
-    public void start(Stage primaryStage) throws Exception {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/inicio-view.fxml"));
+    public void start(Stage primaryStage) throws Exception {        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/inicio-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         //primaryStage.setFullScreen(true);
         primaryStage.setScene(scene);

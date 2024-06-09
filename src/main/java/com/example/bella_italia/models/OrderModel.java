@@ -308,4 +308,49 @@ public class OrderModel {
             e.printStackTrace();
         }
     }
+
+    public List<Platillo> obtenerTodosPlatillos() {
+        List<Platillo> platillos = new ArrayList<>();
+
+        String sql = "SELECT id, name, price FROM dishes";
+
+        try (Connection connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
+             PreparedStatement preparedStatement = connection.prepareStatement(sql);
+             ResultSet resultSet = preparedStatement.executeQuery()) {
+
+            while (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                String nombre = resultSet.getString("name");
+                float precio = resultSet.getFloat("price");
+
+                Platillo platillo = new Platillo(nombre, precio, new ArrayList<>());
+                platillo.actualizarId(id);
+
+                platillos.add(platillo);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return platillos;
+    }
+
+    public void actualizarOrden(Order order) {
+        String query = "UPDATE order_dishes SET quantity = ? WHERE order_id = ? AND dish_id = ?";
+
+        try (Connection connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+
+            for (Platillo platillo : order.getPlatillos()) {
+                preparedStatement.setInt(1, platillo.getQuantity());
+                preparedStatement.setLong(2, order.getId());
+                preparedStatement.setLong(3, platillo.getId());
+                preparedStatement.executeUpdate();
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }

@@ -1,6 +1,7 @@
 package com.example.bella_italia.models;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Order {
@@ -49,5 +50,17 @@ public class Order {
 
     public LocalDateTime getUpdatedAt() {
         return updatedAt;
+    }
+
+    public void setPlatillos(List<Platillo> platillos) {
+        this.platillos = platillos;
+    }
+
+    public void setTotal(double total) {
+        this.total = total;
+    }
+
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.updatedAt = updatedAt;
     }
 }

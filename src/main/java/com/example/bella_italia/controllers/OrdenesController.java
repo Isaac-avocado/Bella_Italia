@@ -79,12 +79,11 @@ public class OrdenesController {
 
         Label orderIdLabel = new Label("ID: " + order.getId());
 
-        // Iterar sobre los platillos de la orden y obtener sus nombres
         StringBuilder platillosString = new StringBuilder();
         for (Platillo platillo : order.getPlatillos()) {
             platillosString.append(platillo.getName()).append(", ");
         }
-        // Eliminar la coma adicional al final
+
         if (platillosString.length() > 0) {
             platillosString.delete(platillosString.length() - 2, platillosString.length());
         }
@@ -92,7 +91,6 @@ public class OrdenesController {
 
         Label totalLabel = new Label("Total: $" + order.getTotal());
 
-        // Obtener el cliente asociado a la orden
         Cliente cliente = orderModel.getClientByOrderId(order.getId());
         Label emailLabel = new Label("Cliente: " + cliente.getEmail());
 
@@ -107,7 +105,6 @@ public class OrdenesController {
 
         orderBox.getChildren().addAll(orderIdLabel, emailLabel, platilloLabel, createSeparator(), totalLabel, downloadButton, editButton, deleteButton);
 
-        // Agregar el VBox a la fila y columna correspondiente
         int column = row % 4; // Selecciona la columna en función del índice de fila
         gridOrdenes.add(orderBox, column, row / 4); // División entera para determinar la fila
     }
@@ -128,13 +125,11 @@ public class OrdenesController {
 
     @FXML
     private void handleEditarOrdenClicked(Order order) {
-        // Crear la ventana del popup
         Stage popupStage = new Stage();
         popupStage.initModality(Modality.APPLICATION_MODAL);
         popupStage.initStyle(StageStyle.UTILITY);
         popupStage.setTitle("Editar Orden");
 
-        // Crear el contenido del popup
         VBox popupVBox = new VBox(10);
         popupVBox.setPrefWidth(300);
         popupVBox.setPrefHeight(200);
@@ -147,24 +142,43 @@ public class OrdenesController {
         ListView<Platillo> platillosListView = new ListView<>(platillosActuales);
         platillosListView.setPrefHeight(100);
 
+        // Configurar la celda personalizada
+        platillosListView.setCellFactory(lv -> new ListCell<Platillo>() {
+            @Override
+            protected void updateItem(Platillo platillo, boolean empty) {
+                super.updateItem(platillo, empty);
+                if (empty || platillo == null) {
+                    setText(null);
+                } else {
+                    setText(platillo.getName());
+                }
+            }
+        });
+
         // Crear botones para agregar o eliminar platillos
         Button agregarPlatilloButton = new Button("Agregar Platillo");
         agregarPlatilloButton.setOnAction(e -> {
-            // Aquí puedes agregar la lógica para agregar platillos a la orden
+            mostrarAgregarPlatilloDialog(platillosActuales);
             System.out.println("Agregar Platillo");
         });
 
         Button eliminarPlatilloButton = new Button("Eliminar Platillo");
         eliminarPlatilloButton.setOnAction(e -> {
-            // Aquí puedes agregar la lógica para eliminar platillos de la orden
-            System.out.println("Eliminar Platillo");
+            Platillo seleccionado = platillosListView.getSelectionModel().getSelectedItem();
+            if (seleccionado != null) {
+                platillosActuales.remove(seleccionado);
+            } else {
+                mostrarAlerta("Error", "No se puede eliminar", "No se ha seleccionado ningún platillo para eliminar.");
+            }
         });
 
         Button guardarCambiosButton = new Button("Guardar Cambios");
         guardarCambiosButton.setOnAction(e -> {
-            // Aquí puedes agregar la lógica para guardar los cambios en la orden
+            order.setPlatillos(new ArrayList<>(platillosActuales));
+            orderModel.actualizarOrden(order); // Método para actualizar la orden en el modelo
             System.out.println("Guardar Cambios");
             popupStage.close();
+            cargarOrdenes(); // Refresca la lista de órdenes en la interfaz principal
         });
 
         popupVBox.getChildren().addAll(new Label("Platillos Actuales:"), platillosListView, agregarPlatilloButton, eliminarPlatilloButton, guardarCambiosButton);
@@ -174,10 +188,63 @@ public class OrdenesController {
         popupStage.showAndWait();
     }
 
+    private void mostrarAgregarPlatilloDialog(ObservableList<Platillo> platillosActuales) {
+        // Crear el diálogo para agregar platillo
+        Stage dialogStage = new Stage();
+        dialogStage.initModality(Modality.APPLICATION_MODAL);
+        dialogStage.initStyle(StageStyle.UTILITY);
+        dialogStage.setTitle("Agregar Platillo");
+
+        VBox dialogVBox = new VBox(10);
+        dialogVBox.setPrefWidth(300);
+        dialogVBox.setPrefHeight(200);
+        dialogVBox.setAlignment(javafx.geometry.Pos.CENTER);
+
+        // Obtener todos los platillos disponibles del modelo (orderModel)
+        List<Platillo> todosPlatillos = orderModel.obtenerTodosPlatillos();
+        ObservableList<Platillo> platillosDisponibles = FXCollections.observableArrayList(todosPlatillos);
+
+        // Crear un ListView para mostrar los platillos disponibles
+        ListView<Platillo> platillosDisponiblesListView = new ListView<>(platillosDisponibles);
+        platillosDisponiblesListView.setPrefHeight(100);
+
+        // Configurar la celda personalizada
+        platillosDisponiblesListView.setCellFactory(lv -> new ListCell<Platillo>() {
+            @Override
+            protected void updateItem(Platillo platillo, boolean empty) {
+                super.updateItem(platillo, empty);
+                if (empty || platillo == null) {
+                    setText(null);
+                } else {
+                    setText(platillo.getName());
+                }
+            }
+        });
+
+        Button agregarButton = new Button("Agregar");
+        agregarButton.setOnAction(e -> {
+            Platillo seleccionado = platillosDisponiblesListView.getSelectionModel().getSelectedItem();
+            if (seleccionado != null) {
+                platillosActuales.add(seleccionado);
+                dialogStage.close();
+            } else {
+                mostrarAlerta("Error", "No se puede agregar", "No se ha seleccionado ningún platillo para agregar.");
+            }
+        });
+
+        dialogVBox.getChildren().addAll(new Label("Platillos Disponibles:"), platillosDisponiblesListView, agregarButton);
+
+        Scene dialogScene = new Scene(dialogVBox);
+        dialogStage.setScene(dialogScene);
+        dialogStage.showAndWait();
+    }
+
+
 
     @FXML
     private void eliminarOrden(Order order) {
         orderModel.eliminarOrden(order);
+        cargarOrdenes();
     }
 
 

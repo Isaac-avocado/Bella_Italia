@@ -7,6 +7,7 @@ public class Platillo {
     private String name;
     private Float price;
     private List<InventarioModel.Ingrediente> ingredientes;
+    private int quantity;
 
 
 
@@ -50,5 +51,14 @@ public class Platillo {
     }
 
     public void setId(int generatedId) {
+    }
+
+    @Override
+    public String toString() {
+        return this.name;
+    }
+
+    public int getQuantity() {
+        return quantity;
     }
 }

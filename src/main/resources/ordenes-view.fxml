@@ -20,11 +20,12 @@
       </Pane>
 
       <!-- Grid para mostrar las órdenes -->
-      <ScrollPane layoutX="50" layoutY="200" prefHeight="600" prefWidth="1180">
+      <ScrollPane layoutX="50" layoutY="200" prefHeight="600" prefWidth="1180" style="-fx-background-color: rgba(254,249,244,1); -fx-scrollbar-color: rgba(248,127,19,1);" >
          <content>
-            <GridPane fx:id="gridOrdenes" hgap="20" prefHeight="805.0" prefWidth="1164.0" vgap="20">
+            <GridPane fx:id="gridOrdenes" hgap="20" prefHeight="805.0" prefWidth="1164.0" vgap="20" style="-fx-background-color: rgba(254,249,244,1);" >
                <!-- Define las columnas del GridPane -->
                <columnConstraints>
+                  <ColumnConstraints />
                   <ColumnConstraints />
                   <ColumnConstraints />
                   <ColumnConstraints />
